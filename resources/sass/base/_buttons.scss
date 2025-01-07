@@ -1,0 +1,78 @@
+
+.button, button.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0);
+  border: 1px solid #3D73FF;
+  border-radius: 0.8rem;
+  color: #FFF;
+  font-family: "Lato", serif;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 170%;
+  outline: none;
+  cursor: pointer;
+
+  &--circle{
+    display: flex;
+    width: 5.1rem;
+    height: 5.1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(86, 86, 114, 0.15);
+  }
+  &--avatar{
+    display: flex;
+    width: 5.1rem;
+    height: 5.1rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &--blue{
+    background-color: #3D73FF;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  &-sort{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    transition: 0.2s ease-in-out;
+    &.active{
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    background: #fff;
+    color: #3D73FF;
+    svg{
+      path{
+        fill: #3D73FF;
+      }
+    }
+  }
+}

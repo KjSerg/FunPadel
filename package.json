@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.9",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "cssnano": "^7.0.6",
+    "laravel-mix": "^6.0.49",
+    "lodash": "^4.17.21",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "browser-sync": "^3.0.3",
+    "fancybox": "^3.0.1",
+    "jquery": "^3.7.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "selectric": "^1.13.0",
+    "simplebar": "^6.3.0"
+  }
+}

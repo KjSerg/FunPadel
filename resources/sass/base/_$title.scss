@@ -1,0 +1,24 @@
+.title{
+  &-text{
+    &-bg{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transform: translateX(-1rem);
+      color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: #3D73FF;
+      opacity: 0.6;
+      animation: slideInLeft 0.4s linear;
+    }
+    &-main{
+      position: relative;
+      z-index: 1;
+    }
+  }
+  &-decorative{
+    position: relative;
+  }
+}

@@ -1,0 +1,488 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun Padel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .community-list-item__icon:after, .faq-item__decor {
+            background-image: url(img/1.png);
+        }
+
+        .leaderboard-table__status.up:after {
+            background-image: url(img/arrow-up.svg);
+        }
+
+        .leaderboard-table__status.down:after {
+            background-image: url(img/arrow-down.svg);
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-container">
+            <a href="#" class="logo header__logo">
+                <img src="img/logo.svg" alt="">
+            </a>
+            <nav class="header-nav header-menu">
+                <ul>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Evolution</a></li>
+                    <li><a href="#">Matches</a></li>
+                    <li><a href="#">About season</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls header-controls--row">
+                <a href="#" class="header__button-user button button--circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <mask id="mask0_284_9554" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+    <rect x="0.5" width="24" height="24" fill="#D9D9D9"/>
+  </mask>
+  <g mask="url(#mask0_284_9554)">
+    <path d="M12.5 12C11.4 12 10.4583 11.6083 9.675 10.825C8.89167 10.0417 8.5 9.1 8.5 8C8.5 6.9 8.89167 5.95833 9.675 5.175C10.4583 4.39167 11.4 4 12.5 4C13.6 4 14.5417 4.39167 15.325 5.175C16.1083 5.95833 16.5 6.9 16.5 8C16.5 9.1 16.1083 10.0417 15.325 10.825C14.5417 11.6083 13.6 12 12.5 12ZM4.5 18V17.2C4.5 16.6333 4.64583 16.1125 4.9375 15.6375C5.22917 15.1625 5.61667 14.8 6.1 14.55C7.13333 14.0333 8.18333 13.6458 9.25 13.3875C10.3167 13.1292 11.4 13 12.5 13C13.6 13 14.6833 13.1292 15.75 13.3875C16.8167 13.6458 17.8667 14.0333 18.9 14.55C19.3833 14.8 19.7708 15.1625 20.0625 15.6375C20.3542 16.1125 20.5 16.6333 20.5 17.2V18C20.5 18.55 20.3042 19.0208 19.9125 19.4125C19.5208 19.8042 19.05 20 18.5 20H6.5C5.95 20 5.47917 19.8042 5.0875 19.4125C4.69583 19.0208 4.5 18.55 4.5 18Z"
+          fill="white"/>
+  </g>
+</svg>
+                </a>
+                <a href="#" class="header__button button button--blue">
+                    Play
+                </a>
+            </div>
+            <a href="#" class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</header>
+<main class="content">
+    <section class="section leaderboard-section">
+        <div class="sign-up-section-decor section-decor">
+            <span><svg width="887" height="882" viewBox="0 0 887 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5" transform="matrix(0.989309 0.145838 0.145838 -0.989309 -832 1377.12)" fill="url(#paint0_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5" transform="matrix(0.989309 0.145838 0.145838 -0.989309 -386.102 1156.79)" fill="url(#paint1_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5" transform="matrix(0.989309 0.145838 0.145838 -0.989309 -541.084 1248.17)" fill="url(#paint2_radial_284_9938)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+            <span><svg width="1044" height="1080" viewBox="0 0 1044 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5" transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1718.63 -203.576)" fill="url(#paint0_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5" transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1272.73 16.7502)" fill="url(#paint1_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5" transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1427.71 -74.6244)" fill="url(#paint2_radial_284_9942)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+        </div>
+        <div class="container">
+            <div class="leaderboard-head">
+                <div class="title-page leaderboard__title">
+                    Evolution
+                </div>
+                <form class="form form-filter leaderboard-filter">
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a season</option>
+                            <option>season 1</option>
+                        </select>
+                    </label>
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a month</option>
+                            <option>month</option>
+                        </select>
+                    </label>
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a week</option>
+                            <option>week</option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+            <div class="evolution-table-head">
+                <a href="#" class="evolution-table-head__button active">Ranks</a>
+                <a href="#" class="evolution-table-head__button">Leagues</a>
+                <a href="#" class="evolution-table-head__button">Ratings</a>
+                <a href="#" class="evolution-table-head__button">Points</a>
+            </div>
+            <div class="table-wrapper evolution-table scrollable-content"  >
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Player</th>
+                            <th >Wk 1</th>
+                            <th >Wk 2</th>
+                            <th >Wk 3</th>
+                            <th >Wk 4</th>
+                            <th >Wk 5</th>
+                            <th >Wk 6</th>
+                            <th >Wk 7</th>
+                            <th >Wk 8</th>
+                            <th >Wk 9</th>
+                            <th >Wk 10</th>
+                            <th >Wk 11</th>
+                            <th >Wk 12</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>23</td>
+                            <td>10</td>
+                            <td>14</td>
+                            <td>14</td>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.modal{
+  display: none;
+  padding: 4rem;
+  width: 100%;
+  max-width: 59rem;
+  border-radius: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #1B1B29;
+  color: #FFF;
+
+  @media (max-width: 767px) {
+    padding: 1.6rem;
+    padding-top: 3rem;
+  }
+  &__title{
+    margin-bottom: 3rem;
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%;
+    text-transform: uppercase;
+    @media (max-width: 767px) {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+    }
+  }
+}

@@ -1,0 +1,359 @@
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  font-family: "Lato", serif;
+
+  &-label {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Lato", serif;
+
+    &-error {
+      display: none;
+      color: #FFF;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 175%;
+    }
+
+
+
+    &-head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      color: #FFF;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 170%;
+      @media (max-width: 1440px) {
+        line-height: 2rem;
+        font-size: 1.4rem;
+      }
+
+      .icon {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.8rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    &-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      input{
+        padding-right: 3rem;
+      }
+    }
+
+    &__button{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      right: 2rem;
+      top: calc(50% - 1.2rem);
+      opacity: 0.4;
+      &:hover{
+        opacity: 0.6;
+      }
+      &.active{
+        opacity: 1;
+      }
+    }
+
+    &.two-thirds {
+      width: calc(66.6% - 0.8rem);
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    &.third {
+      width: calc(33.3% - 0.8rem);
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    &.fifth {
+      width: calc(20% - 0.8rem);
+      @media (max-width: 1024px) {
+        width: calc(50% - 0.8rem);
+      }
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    &.half {
+      width: calc(50% - 0.8rem);
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+
+    &.error{
+      color: red;
+      .form-label-error{
+        display: block;
+      }
+    }
+
+  }
+
+  &-checkbox-wrapper {
+    width: 100%;
+    padding: 1.6rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #FFF;
+    color: #000;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    @media (max-width: 1440px) {
+      padding: 0.8rem 1rem;
+      font-size: 1.6rem;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      display: none;
+
+      & + .icon {
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.7rem;
+        border: 1px solid #000;
+        background: #FFF;
+
+        img {
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+
+      &:checked + .icon {
+        border: none;
+        background: #FFF;
+
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .checkbox {
+    &-icon {
+      position: relative;
+      cursor: pointer;
+      margin-right: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      flex-grow: 0;
+      flex-shrink: 0;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      overflow: hidden;
+
+      &:after {
+        position: absolute;
+        content: '';
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 110%;
+        height: 110%;
+        opacity: 0;
+        transition: 0.1s ease-in-out;
+      }
+    }
+
+    &-text {
+      width: calc(100% - 4.5rem);
+      color: #FFF;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked + .checkbox-icon {
+      &:after {
+        opacity: 1 !important;
+      }
+    }
+  }
+
+  button{
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  &-link{
+    color:rgba( #FDFDFD, 0.4);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 170%;
+    &:hover{
+      color:rgba( #FDFDFD, 0.8);
+    }
+  }
+
+  &-filter{
+    display: flex;
+    &-item{
+      width: 20rem;
+
+    }
+  }
+}
+
+input.error, textarea.error {
+  border-color: red;
+  outline: none;
+}
+
+button{
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  padding:  1.4rem 2rem;
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(86, 86, 114, 0.15);
+  backdrop-filter: blur(15px);
+  font-family: "Lato", serif;
+  color: #FFF;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+
+  &::placeholder {
+    font-family: "Lato", serif;
+  }
+}
+
+textarea {
+  width: 100%;
+  height: 14.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #FFF;
+  color: #000;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font-family: "Lato", serif;
+
+  &::placeholder {
+    font-family: "Lato", serif;
+  }
+}
+
+select.select{
+  opacity: 0;
+}
+
+.selectric{
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(86, 86, 114, 0.15);
+  backdrop-filter: blur(15px);
+  &-items{
+    border-radius: 0.8rem;
+    background: #0b0b15;
+    backdrop-filter: blur(15px);
+    color:rgba( #FFF, 0.4);  font-family: "Lato", serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    overflow: hidden;
+    li{
+      color:rgba( #FFF, 0.4);  font-family: "Lato", serif;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+  &-hover .selectric{
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  & .button, & .label{
+    height: auto;
+  }
+  .label{
+    display: inline-block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color:rgba( #FFF, 0.4);  font-family: "Lato", serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+  &-wrapper{
+    width: 100%;
+    color: #FFF;  font-family: "Lato", serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+    border: none!important;
+  }
+  .button{
+    height: 100%;
+    background-color: rgba(#fff, 0);
+  }
+}

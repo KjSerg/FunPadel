@@ -1,0 +1,58 @@
+
+.table{
+  &-wrapper{
+    width: 100%;
+    height: calc(100vh - 26rem);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    overflow: auto;
+
+    @media (max-width: 1024px){
+      height: calc(100vh - 32rem);
+    }
+
+    @media (max-width: 900px){
+      height: calc(100vh - 10rem);
+    }
+    tr {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    table{
+      width: 100%;
+      min-width: 1100px;
+    }
+
+    th, td{
+      padding: 1rem;
+    }
+    thead, th, td{
+      text-align: center;
+      vertical-align: middle;
+      &.text-left{
+        text-align: left;
+      }
+    }
+    thead{
+      &.moved{
+
+        background: rgba(0, 0, 0, .95)
+      }
+    }
+    td{
+      color: #FFF;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170%;
+    }
+    .points{
+      &-negative{
+        color: #E33351;
+      }
+      &-positive{
+        color:  #5AED69!important;
+      }
+    }
+  }
+}
+

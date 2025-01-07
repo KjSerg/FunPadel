@@ -1,0 +1,465 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun Padel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .community-list-item__icon:after, .faq-item__decor {
+            background-image: url(img/1.png);
+        }
+
+        .leaderboard-table__status.up:after {
+            background-image: url(img/arrow-up.svg);
+        }
+
+        .leaderboard-table__status.down:after {
+            background-image: url(img/arrow-down.svg);
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-container">
+            <a href="#" class="logo header__logo">
+                <img src="img/logo.svg" alt="">
+            </a>
+            <nav class="header-nav header-menu">
+                <ul>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Evolution</a></li>
+                    <li><a href="#">Matches</a></li>
+                    <li><a href="#">About season</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls header-controls--row">
+                <a href="#" class="header__button-user button--avatar">
+                    <img src="img/avatar.png" alt="">
+                </a>
+                <a href="#" class="header__button button button--blue">
+                    Play
+                </a>
+            </div>
+            <a href="#" class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</header>
+<main class="content">
+    <section class="personal-section section first-section">
+        <div class="sign-up-section-decor section-decor">
+            <span><svg width="887" height="882" viewBox="0 0 887 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5"
+        transform="matrix(0.989309 0.145838 0.145838 -0.989309 -832 1377.12)" fill="url(#paint0_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(0.989309 0.145838 0.145838 -0.989309 -386.102 1156.79)" fill="url(#paint1_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(0.989309 0.145838 0.145838 -0.989309 -541.084 1248.17)" fill="url(#paint2_radial_284_9938)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+            <span><svg width="1044" height="1080" viewBox="0 0 1044 1080" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5"
+        transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1718.63 -203.576)"
+        fill="url(#paint0_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1272.73 16.7502)"
+         fill="url(#paint1_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1427.71 -74.6244)"
+         fill="url(#paint2_radial_284_9942)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+        </div>
+        <div class="container">
+            <div class="personal-section-row">
+                <a href="#personal-section-sidebar" class="sidebar-burger toggle-class">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+                <div class="sidebar personal-section-sidebar" id="personal-section-sidebar">
+
+                    <div class="sidebar-head">
+                        <div class="sidebar-avatar">
+                            <img class="contain" src="img/s-avatar.png" alt="">
+                        </div>
+                        <div class="sidebar-name">
+                            Gianni Venturini
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link ">
+                                    <span class="icon"><img src="img/person1.svg"></span>
+                                    Personal information
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link active">
+                                    <span class="icon"><img src="img/account_balance_wallet.svg"></span>
+                                    Payment details
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link">
+                                    <span class="icon"><img src="img/emoji_events.svg"></span>
+                                    League status
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link">
+                                    <span class="icon"><img src="img/hotel_class.svg"></span>
+                                    Rating
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link">
+                                    <span class="icon"><img src="img/history_2.svg"></span>
+                                    Game history
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link">
+                                    <span class="icon"><img src="img/bid_landscape.svg"></span>
+                                    Rating change chart
+                                </a>
+                            </li>
+                            <li class="sidebar-menu__item">
+                                <a href="#" class="sidebar-menu__link">
+                                    <span class="icon"><img src="img/notifications.svg"></span>
+                                    Manage notifications
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="personal-section-wrap">
+                    <div class="personal-information">
+                        <div class="title-page personal-information__title">
+                            Payment details
+                        </div>
+                        <div class="personal-information__subtitle text">
+                            <p>
+                                Here you will find payment details, you can change your payment card and view your
+                                payment history.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personal-card">
+                        <div class="personal-card__title">
+                            Card number
+                        </div>
+                        <div class="personal-card-preview">
+                            <div class="personal-card-preview__image">
+                                <img src="img/mastercard.svg" alt="">
+                            </div>
+                            <div class="personal-card-preview__text">
+                                **** **** **** 4587
+                            </div>
+                        </div>
+                        <a href="#change-card-modal" class="personal-card__button button fancybox button--blue">
+                            Change card
+                        </a>
+                    </div>
+                    <div class="transactions">
+                        <div class="transactions__title">
+                            Transaction history
+                        </div>
+                        <div class="transactions-table scrollable-content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Card number</th>
+                                        <th>Sum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.07.2024</td>
+                                        <td>**** **** **** 4587</td>
+                                        <td>-99 USDT</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="modal change-card-modal" id="change-card-modal">
+    <div class="modal__title">Change card</div>
+    <form class="change-card-modal-form form">
+        <label class="form-label ">
+            <span class="form-label-head">Card number</span>
+            <input type="text" class="card-number" required placeholder="Enter the number indicated on your card">
+        </label>
+        <label class="form-label half">
+            <span class="form-label-head">Month/year</span>
+            <input type="text" class="expiry-date" required placeholder="00/00">
+        </label>
+        <label class="form-label half">
+            <span class="form-label-head">CVV</span>
+            <input type="text" class="cvv" required placeholder="000">
+        </label>
+        <button type="submit" class="button button--blue">Save</button>
+    </form>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

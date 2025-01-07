@@ -1,0 +1,131 @@
+.leaderboard{
+  &-filter{
+    .selectric .label{
+      @media (max-width: 500px){
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+    @media (max-width: 767px){
+      width: 100%;
+    }
+    .form-filter-item{
+      @media (max-width: 767px){
+        width: 31%;
+      }
+      @media (max-width: 500px){
+        width: 100%;
+      }
+    }
+  }
+  &__title{
+    margin-right: 2rem;
+    @media (max-width: 900px){
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
+  &-head{
+    margin-bottom: 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 900px){
+      flex-direction: column;
+      align-items: flex-start;
+
+    }
+  }
+  &-section{
+    padding-top: 15rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    @media (max-width: 500px){
+      padding-top: 12rem;
+    }
+    .sign-up-section-decor span{
+      &:first-child{
+        left: -20rem;
+      }
+      &:last-child{
+        right: -50rem;
+      }
+    }
+  }
+  &-table{
+    border-radius: 1rem;
+    tr{
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(86, 86, 114, 0.15);
+      &:nth-child(even){
+        background: rgba(149, 149, 181, 0.15);
+      }
+    }
+
+    table{
+
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    &-matches{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      &__item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+    &__player{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .avatar{
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+    &__status{
+      display: inline-block;
+      position: relative;
+      padding-left: 3rem;
+      &:after{
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        top: 50%;
+        width: 2.2rem;
+        height: 2.2rem;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+    thead{
+      position: relative;
+      z-index: 2;
+      background: rgba(149, 149, 181, 0.15);
+      color: #FF5FCC;
+      text-align: center;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 170%;
+      transform: translateY(0);
+
+    }
+  }
+}

@@ -1,0 +1,457 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun Padel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .community-list-item__icon:after, .faq-item__decor {
+            background-image: url(img/1.png);
+        }
+
+        .leaderboard-table__status.up:after {
+            background-image: url(img/arrow-up.svg);
+        }
+
+        .leaderboard-table__status.down:after {
+            background-image: url(img/arrow-down.svg);
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-container">
+            <a href="#" class="logo header__logo">
+                <img src="img/logo.svg" alt="">
+            </a>
+            <nav class="header-nav header-menu">
+                <ul>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Evolution</a></li>
+                    <li><a href="#">Matches</a></li>
+                    <li><a href="#">About season</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls header-controls--row">
+                <a href="#" class="header__button-user button--avatar">
+                    <img src="img/avatar.png" alt="">
+                </a>
+                <a href="#" class="header__button button button--blue">
+                    Play
+                </a>
+            </div>
+            <a href="#" class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</header>
+<main class="content">
+    <section class="section leaderboard-section">
+        <div class="sign-up-section-decor section-decor">
+            <span><svg width="887" height="882" viewBox="0 0 887 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5"
+        transform="matrix(0.989309 0.145838 0.145838 -0.989309 -832 1377.12)" fill="url(#paint0_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(0.989309 0.145838 0.145838 -0.989309 -386.102 1156.79)" fill="url(#paint1_radial_284_9938)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(0.989309 0.145838 0.145838 -0.989309 -541.084 1248.17)" fill="url(#paint2_radial_284_9938)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9938" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+            <span><svg width="1044" height="1080" viewBox="0 0 1044 1080" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.55">
+<circle opacity="0.5" cx="554.5" cy="554.5" r="554.5"
+        transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1718.63 -203.576)"
+        fill="url(#paint0_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1272.73 16.7502)"
+         fill="url(#paint1_radial_284_9942)"/>
+<ellipse opacity="0.5" cx="561.5" cy="554.5" rx="561.5" ry="554.5"
+         transform="matrix(-0.989309 -0.145838 -0.145838 0.989309 1427.71 -74.6244)"
+         fill="url(#paint2_radial_284_9942)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(554.5 554.5) rotate(90.0905) scale(554.501)">
+<stop stop-color="#FFAD76"/>
+<stop offset="1" stop-color="#FFAD76" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#3D73FF"/>
+<stop offset="1" stop-color="#3D73FF" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_284_9942" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(561.5 554.5) rotate(90.0917) scale(554.501 561.501)">
+<stop stop-color="#FF5FCC"/>
+<stop offset="1" stop-color="#FF5FCC" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg></span>
+        </div>
+        <div class="container">
+            <div class="leaderboard-head">
+                <div class="title-page leaderboard__title">
+                    Matches
+                </div>
+                <form class="form form-filter leaderboard-filter">
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a season</option>
+                            <option>season 1</option>
+                        </select>
+                    </label>
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a month</option>
+                            <option>month</option>
+                        </select>
+                    </label>
+                    <label class="form-label form-filter-item">
+                        <select class="select">
+                            <option selected disabled>Select a week</option>
+                            <option>week</option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+            <div class="evolution-table-head">
+                <a href="#" class="evolution-table-head__button active">Results</a>
+                <a href="#" class="evolution-table-head__button">Schedule</a>
+                <form class="evolution-table-head-filter">
+                    <div class="evolution-table-head-filter-item">
+                        <select class="select">
+                            <option>All leagues</option>
+                            <option>All leagues</option>
+                        </select>
+                    </div>
+                    <div class="evolution-table-head-filter-item">
+                        <select class="select">
+                            <option>All players</option>
+                            <option>All leagues</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="table-wrapper matches-table scrollable-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-left">Player 1</th>
+                            <th class="text-left">Player 2</th>
+                            <th>Result</th>
+                            <th>Points</th>
+                            <th>Bonus</th>
+                            <th>Total points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="matches-table-header">
+                            <td colspan="6">
+                                <div class="matches-table-header-row">
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/sports_tennis.svg" alt=""></div>
+                                        League 1
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/location_on.svg" alt=""></div>
+                                        CIT Padel Amoreiras
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/schedule.svg" alt=""></div>
+                                        29/10 20:30
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-negative">3</td>
+                            <td class="points-negative">-9.1</td>
+                            <td>0.0</td>
+                            <td class="points-negative">-9.1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-positive">6</td>
+                            <td class="points-positive">9.1</td>
+                            <td>0.0</td>
+                            <td class="points-positive">9.1</td>
+                        </tr>
+                        <tr class="matches-table-header matches-table-header--grey">
+                            <td colspan="6">
+                                <div class="matches-table-header-row">
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/sports_tennis.svg" alt=""></div>
+                                        League 1
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/location_on.svg" alt=""></div>
+                                        CIT Padel Amoreiras
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/schedule.svg" alt=""></div>
+                                        29/10 20:30
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-negative">3</td>
+                            <td class="points-negative">-9.1</td>
+                            <td>0.0</td>
+                            <td class="points-negative">-9.1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-positive">6</td>
+                            <td class="points-positive">9.1</td>
+                            <td>0.0</td>
+                            <td class="points-positive">9.1</td>
+                        </tr>
+                        <tr class="matches-table-header">
+                            <td colspan="6">
+                                <div class="matches-table-header-row">
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/sports_tennis.svg" alt=""></div>
+                                        League 1
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/location_on.svg" alt=""></div>
+                                        CIT Padel Amoreiras
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/schedule.svg" alt=""></div>
+                                        29/10 20:30
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-negative">3</td>
+                            <td class="points-negative">-9.1</td>
+                            <td>0.0</td>
+                            <td class="points-negative">-9.1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-positive">6</td>
+                            <td class="points-positive">9.1</td>
+                            <td>0.0</td>
+                            <td class="points-positive">9.1</td>
+                        </tr>
+
+                        <tr class="matches-table-header matches-table-header--grey">
+                            <td colspan="6">
+                                <div class="matches-table-header-row">
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/sports_tennis.svg" alt=""></div>
+                                        League 1
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/location_on.svg" alt=""></div>
+                                        CIT Padel Amoreiras
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/schedule.svg" alt=""></div>
+                                        29/10 20:30
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-negative">3</td>
+                            <td class="points-negative">-9.1</td>
+                            <td>0.0</td>
+                            <td class="points-negative">-9.1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-positive">6</td>
+                            <td class="points-positive">9.1</td>
+                            <td>0.0</td>
+                            <td class="points-positive">9.1</td>
+                        </tr>
+
+                        <tr class="matches-table-header">
+                            <td colspan="6">
+                                <div class="matches-table-header-row">
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/sports_tennis.svg" alt=""></div>
+                                        League 1
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/location_on.svg" alt=""></div>
+                                        CIT Padel Amoreiras
+                                    </div>
+                                    <div class="matches-table-header-col">
+                                        <div class="icon"><img src="img/schedule.svg" alt=""></div>
+                                        29/10 20:30
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-negative">3</td>
+                            <td class="points-negative">-9.1</td>
+                            <td>0.0</td>
+                            <td class="points-negative">-9.1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td>
+                                <div class="leaderboard-table__player">
+                                    <div class="avatar"><img src="img/avatar.png" alt=""></div>
+                                    Lotfi Alaoui Btarni
+                                </div>
+                            </td>
+                            <td class="points-positive">6</td>
+                            <td class="points-positive">9.1</td>
+                            <td>0.0</td>
+                            <td class="points-positive">9.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>
