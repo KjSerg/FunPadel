@@ -76,3 +76,11 @@
     }
   }
 }
+
+.selectric .button{
+
+  border: none;
+  &:hover {
+    background-color: hsla(0, 0%, 100%, 0);
+  }
+}
