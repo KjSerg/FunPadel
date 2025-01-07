@@ -34,7 +34,8 @@
     }
     thead{
       &.moved{
-
+        position: relative;
+        z-index: 10;
         background: rgba(0, 0, 0, .95)
       }
     }

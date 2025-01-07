@@ -88,6 +88,8 @@
       background: #3D73FF;
       transition: 0.5s ease;
       cursor: pointer;
+      transform: translateZ(0);
+      will-change: transform;
       @media (max-width: 500px){
         width: 4rem;
         height: 4rem;
@@ -119,6 +121,7 @@
       border-top-left-radius: 1.4rem;
       border-bottom-left-radius: 1.4rem;
       backdrop-filter: blur(7px);
+      transform: translateZ(0);
       @media (max-width: 500px){
         width: calc(100% - 5rem);
       }
@@ -137,12 +140,18 @@
       border-top: none;
       border-bottom-right-radius: 1.4rem;
       backdrop-filter: blur(7px);
+      transform: translateZ(0);
       @media (max-width: 500px){
         height:calc( 100% - 5rem);
         width: 5rem;
       }
     }
     &.active{
+
+      &:after,
+      &:before{
+
+      }
       .faq-item__icon{
         background: rgba(86, 86, 114, 0.15);
         backdrop-filter: blur(15px);

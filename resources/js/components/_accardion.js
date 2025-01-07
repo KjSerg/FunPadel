@@ -12,10 +12,10 @@ export const accordion = () => {
         $section.find('.accordion').not($element).removeClass('active');
         if (isShowed) {
             $element.removeClass('active');
-            $content.slideUp();
+            $content.slideUp(200);
         } else {
             $element.addClass('active');
-            $content.slideDown();
+            $content.slideDown(200);
         }
     });
 }

@@ -28,7 +28,7 @@
     @media (max-width: 767px){
       flex-direction: column;
     }
-    @media (max-width: 360px){
+    @media (max-width: 450px){
       gap: 2rem 0;
     }
     &-item{
@@ -152,7 +152,7 @@
           width: calc(100% + 4rem);
           height: calc(100% + 4rem);
         }
-        @media (max-width: 360px){
+        @media (max-width: 450px){
           display: none;
         }
       }
