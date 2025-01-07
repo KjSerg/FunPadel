@@ -25,3 +25,22 @@
     }
   }
 }
+
+.changed-card-modal{
+  &__button{
+    margin-top: 4rem;
+    width: 100%;
+  }
+  &__title{
+    margin-bottom: 2.4rem;
+  }
+  &__image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13rem;
+    height: 13rem;
+    margin: 0 auto 4rem;
+
+  }
+}

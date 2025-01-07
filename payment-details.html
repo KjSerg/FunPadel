@@ -442,6 +442,7 @@
         </div>
     </section>
 </main>
+
 <div class="modal change-card-modal" id="change-card-modal">
     <div class="modal__title">Change card</div>
     <form class="change-card-modal-form form">
@@ -459,7 +460,38 @@
         </label>
         <button type="submit" class="button button--blue">Save</button>
     </form>
+    <a href="#changed-card-modal" class="button button--blue changed-card-modal__button fancybox">
+        changed card modal
+    </a>
+    <a href="#change-error-modal" class="button button--blue changed-card-modal__button fancybox">
+        error modal
+    </a>
 </div>
+<div class="modal changed-card-modal" id="changed-card-modal">
+    <div class="changed-card-modal__image">
+        <img src="img/check-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">Card changed</div>
+    <div class="modal__text text text-center">
+        <p>Your card has been successfully changed, from now on the payment will be charged to the added card.</p>
+    </div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        Ok
+    </a>
+</div>
+<div class="modal changed-card-modal" id="change-error-modal">
+    <div class="changed-card-modal__image">
+        <img src="img/error-x-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">An error occurred</div>
+    <div class="modal__text text text-center">
+        <p>Please check the data again or provide another card.</p>
+    </div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        Back
+    </a>
+</div>
+
 <script src="js/app.js"></script>
 </body>
 </html>

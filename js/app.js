@@ -6408,7 +6408,19 @@ __webpack_provided_window_dot_jQuery = (jquery__WEBPACK_IMPORTED_MODULE_0___defa
 
 var fancyboxInit = function fancyboxInit() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-fancybox]').fancybox({});
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.fancybox').fancybox();
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.fancybox', function (e) {
+    e.preventDefault();
+    var $t = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
+    var href = $t.attr('href');
+    if (href === undefined) return;
+    var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find(href);
+    if ($el.length === 0) return;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($el);
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.close-fancybox-modal', function (e) {
+    e.preventDefault();
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
+  });
 };
 
 /***/ }),
