@@ -7,6 +7,9 @@
   backdrop-filter: blur(15px);
   color: #FFF;
 
+  @media (max-width: 1024px) {
+    padding: 1rem 0rem;
+  }
   &-menu {
     border-top: 1px solid rgba(255, 255, 255, 0.14);
 
@@ -22,7 +25,9 @@
       font-weight: 600;
       line-height: 170%;
       transition: 0.5s ease;
-
+      @media (max-width: 1024px) {
+        padding: 1rem 2rem;
+      }
       &:hover, &.active {
         color: #3D73FF;
       }
@@ -48,6 +53,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
+    @media (max-width: 1024px) {
+      font-size: 2rem;
+      line-height: 120%;
+    }
   }
 
   &-avatar {
@@ -64,6 +73,9 @@
 
   &-head {
     padding: 0 4rem 2.4rem 4rem;
+    @media (max-width: 1024px) {
+      padding: 0 2rem 1rem 2rem;
+    }
   }
 
   &-burger{

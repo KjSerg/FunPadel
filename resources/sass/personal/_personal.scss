@@ -77,8 +77,19 @@
     }
 
     &-table{
+      height: auto;
+      max-height: calc(100vh - 30rem);
+      @media (max-width: 900px) {
+        height: auto;
+        max-height: calc(100vh - 10rem);
+      }
       table{
         min-width: 900px;
+      }
+      &.game-history-table{
+        table{
+          min-width: 600px;
+        }
       }
     }
   }
