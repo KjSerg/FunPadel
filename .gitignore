@@ -1,3 +1,5 @@
 node_modules/
 video/
 .idea/
+*.log
+.env

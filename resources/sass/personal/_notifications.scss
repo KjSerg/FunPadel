@@ -1,0 +1,30 @@
+.notifications{
+  &-form{
+    width: 100%;
+    max-width: 55rem;
+  }
+  &-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:not(:last-child){
+      margin-bottom: 2.4rem;
+      @media (max-width: 800px) {
+        margin-bottom: 2rem;
+      }
+    }
+    &__label{
+      display: block;
+      margin-right: 2rem;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      cursor: pointer;
+      @media (max-width: 800px) {
+        font-size: 2rem;
+        line-height: 120%;
+      }
+    }
+  }
+}
