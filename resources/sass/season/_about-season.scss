@@ -1,0 +1,218 @@
+.about-season {
+  &__title {
+    margin-right: 2rem;
+    @media (max-width: 1023px) {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    max-width: 63.6rem;
+
+  }
+
+  &-section {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    min-height: 100vh;
+
+    &__button {
+      display: inline-flex;
+      padding: 1rem 3.2rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 12rem;
+      padding-bottom: 2rem;
+    }
+
+    .section-decor {
+      span {
+        &:nth-child(2) {
+          right: -50rem;
+        }
+      }
+    }
+
+    &-head {
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: space-between;
+      @media (max-width: 1023px) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &-item {
+      width: calc(25% - 2rem);
+
+      @media (max-width: 1350px) {
+        width: calc(50% - 2rem);
+      }
+      @media (max-width: 550px) {
+        width: 100%;
+      }
+
+      &-info {
+        position: relative;
+        color: #FFF;
+        font-size: 1.8rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 170%;
+
+        .decor {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          width: 0.8rem;
+          height: 4.8rem;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          overflow: hidden;
+
+          svg {
+            width: 100%;
+            height: 100%;
+
+          }
+
+          &:before {
+            display: none;
+          }
+        }
+
+        li {
+          &:not(.decor) {
+
+            position: relative;
+            padding-left: 2.2rem;
+
+            span {
+              position: absolute;
+              display: block;
+              width: 0.8rem;
+              height: 0.8rem;
+              border-radius: 50%;
+              left: 0;
+              top: 1.2rem;
+              background-color: currentColor;
+            }
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 4.8rem;
+          }
+        }
+      }
+
+      &-price {
+        display: flex;
+        align-items: flex-end;
+
+        &:not(:last-child) {
+          margin-bottom: 1.6rem;
+        }
+
+        color: #FFF;
+        font-size: 2.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        text-transform: uppercase;
+        @media (max-width: 700px) {
+          font-size: 2rem;
+          font-weight: 600;
+          line-height: 120%;
+        }
+
+        s {
+          display: inline-block;
+          margin-left: 0.8rem;
+          color: #FFF;
+          font-size: 1.5rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 175%;
+          @media (max-width: 700px) {
+            font-size: 1.4rem;
+            line-height: 140%;
+          }
+        }
+      }
+
+      &-footer {
+        padding: 1.6rem 4rem 2.4rem 4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(86, 86, 114, 0.15);
+        border-bottom-right-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+        @media (max-width: 700px) {
+          padding: 1rem 2rem;
+          border-bottom-right-radius: 1rem;
+          border-bottom-left-radius: 1rem;
+        }
+      }
+
+      &-body {
+        padding: 1.6rem 4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(86, 86, 114, 0.15);
+        @media (max-width: 700px) {
+          padding: 1rem 2rem;
+        }
+      }
+
+      &__head {
+        border-top-right-radius: 2rem;
+        border-top-left-radius: 2rem;
+        display: flex;
+        align-items: center;
+        padding: 2.4rem 4rem;
+        background: rgba(149, 149, 181, 0.15);
+        font-size: 2.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        text-transform: uppercase;
+        @media (max-width: 700px) {
+          padding: 1rem 2rem;
+          border-top-right-radius: 1rem;
+          border-top-left-radius: 1rem;
+        }
+
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-grow: 0;
+          flex-shrink: 0;
+          width: 2.8rem;
+          height: 2.8rem;
+          margin-right: 1.2rem;
+        }
+      }
+    }
+
+    &--payment {
+      width: 38rem;
+      flex-direction: column;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+
+}
