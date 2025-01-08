@@ -12,6 +12,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import {toggler} from "./_togglers";
 import {creditCart} from "./_credit-card";
 import {fancyboxInit} from "./fancybox-init";
+import {Charts} from "./Charts";
 
 export default class Application {
     constructor() {
@@ -35,6 +36,7 @@ export default class Application {
             toggler();
             creditCart();
             fancyboxInit();
+            const chart = new Charts();
         });
     }
 
