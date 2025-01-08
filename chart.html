@@ -189,21 +189,21 @@
                         <div class="chart__title personal-section-wrap-head__title">
                             Rating
                         </div>
-                        <form class="form form-filter chart-filter">
+                        <form class="form form-filter chart-filter" action="./storage/" data-chart="#chart-js">
                             <label class="form-label form-filter-item">
-                                <select class="select">
+                                <select class="select" name="period">
                                     <option selected disabled>Select a period</option>
                                     <option>season 1</option>
                                 </select>
                             </label>
                             <label class="form-label form-filter-item">
-                                <select class="select">
+                                <select class="select" name="tournaments">
                                     <option selected disabled>Select a 	tournaments/matches</option>
                                     <option>month</option>
                                 </select>
                             </label>
                             <label class="form-label form-filter-item">
-                                <select class="select">
+                                <select class="select" name="type">
                                     <option selected disabled>Select a game type</option>
                                     <option>week</option>
                                 </select>
@@ -211,10 +211,7 @@
                         </form>
                     </div>
                     <div class="chart-container">
-                        <canvas class="chart-js chart is-test not-responsive" data-source="storage/chart.json"></canvas>
-                    </div>
-                    <div class="chart-container">
-                        <canvas class="chart-js chart is-test " data-source="storage/chart.json"></canvas>
+                        <canvas class="chart-js chart is-test not-responsive" id="chart-js" data-source="storage/chart.json"></canvas>
                     </div>
                 </div>
             </div>

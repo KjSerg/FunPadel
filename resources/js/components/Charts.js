@@ -1,4 +1,5 @@
 import Chart from 'chart.js/auto';
+import {log10} from "chart.js/helpers";
 
 export class Charts {
     constructor() {
@@ -7,6 +8,7 @@ export class Charts {
         this.lastWidth = window.innerWidth;
         this.initLoop();
         this.resizeEventListener();
+        this.formEventListener();
     }
 
     charts = {};
@@ -32,20 +34,44 @@ export class Charts {
         const lastWidth = t.lastWidth;
         if (!resizeListener) return;
         if (resizeListenerEnabled) return;
+        t.resizeListenerEnabled = true;
+        let resizeTimer = null;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
-            let resizeTimer = setTimeout(() => {
+            resizeTimer = setTimeout(() => {
                 let currentWidth = window.innerWidth;
                 if (lastWidth !== currentWidth) {
                     t.lastWidth = currentWidth;
-                    console.log(t.notResponsiveCharts)
                     for (let id in t.notResponsiveCharts) {
-                        console.log(t.notResponsiveCharts[id])
-                        t.notResponsiveCharts[id].update();
+                        t.reInitChartElementByID(id);
                     }
                 }
             }, 500);
         });
+    }
+
+    reInitChartElementByID(id) {
+        const t = this;
+        const el = document.getElementById(id);
+        t.notResponsiveCharts[id].destroy();
+        t.charts[id] = null;
+        t.notResponsiveCharts[id] = null;
+        el.classList.remove('chart-init');
+        el.removeAttribute('width');
+        el.removeAttribute('style');
+        t.chartItemInit(el);
+    }
+
+    reInitChartElementByElement(el) {
+        const t = this;
+        const id = el.getAttribute('id');
+        t.notResponsiveCharts[id].destroy();
+        t.charts[id] = null;
+        t.notResponsiveCharts[id] = null;
+        el.classList.remove('chart-init');
+        el.removeAttribute('width');
+        el.removeAttribute('style');
+        t.chartItemInit(el);
     }
 
     initLoop() {
@@ -156,6 +182,7 @@ export class Charts {
             data: data,
             options: options
         };
+        console.log(options)
         t.charts[id] = new Chart(element, config);
         if (element.classList.contains('not-responsive')) {
             t.notResponsiveCharts[id] = t.charts[id];
@@ -164,5 +191,36 @@ export class Charts {
         setTimeout(function () {
             element.classList.remove('loading');
         }, 10);
+    }
+
+    formEventListener() {
+        const t = this;
+        document.querySelectorAll('.chart-filter').forEach(function (form) {
+            form.querySelectorAll('input').forEach(function (el) {
+                el.addEventListener('change', function () {
+                    form.dispatchEvent(new Event('submit'));
+                })
+            })
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const action = form.getAttribute('action');
+                const selector = form.getAttribute('data-chart');
+                if (selector === null) return;
+                const chartElement = document.querySelector(selector);
+                if (chartElement === null) return;
+                const formData = new FormData(form);
+                let url = action + '?';
+                let arr = [];
+                for (const [key, value] of formData.entries()) {
+                    arr.push(`${key}=${value}`);
+                }
+                url = encodeURI(url + arr.join('&'));
+                chartElement.setAttribute('data-source', url);
+                t.reInitChartElementByElement(chartElement);
+            });
+        });
+        $(document).on('change', '.chart-filter select', function () {
+            $(this).closest('form')[0].dispatchEvent(new Event('submit'));
+        });
     }
 }
