@@ -1,102 +1,123 @@
-import {burger} from "./ ui/_burger";
-import {accordion} from "./ ui/_accardion";
-import {numberInput} from "./forms/_number-input";
-import {_parallax} from "./features/_parallax";
-import {detectBrowser, isMobile} from "./utils/_helpers";
-import {showPassword} from "./forms/_show-password";
-import {selectrickInit} from "./forms/_selectrickInit";
+import { numberInput } from "./forms/_number-input";
+import { _parallax } from "./features/_parallax";
+import { detectBrowser, isMobile } from "./utils/_helpers";
+import { showPassword } from "./forms/_show-password";
+import { selectrickInit } from "./forms/_selectrickInit";
 import SimpleBar from "simplebar";
-import 'simplebar/dist/simplebar.css';
-import ResizeObserver from 'resize-observer-polyfill';
-import {toggler} from "./ ui/_togglers";
-import {creditCart} from "./forms/_credit-card";
-import {fancyboxInit} from "../plugins/fancybox-init";
-import {Charts} from "./charts/Charts";
+import "simplebar/dist/simplebar.css";
+import ResizeObserver from "resize-observer-polyfill";
+import { toggler } from "./ui/_togglers";
+import { creditCart } from "./forms/_credit-card";
+import { fancyboxInit } from "../plugins/fancybox-init";
+import { Charts } from "./charts/Charts";
+import {burger} from "./ui/_burger";
+import {accordion} from "./ui/_accardion";
 
 export default class Application {
     constructor() {
         this.$doc = $(document);
-        this.$body = $('body');
-        this.initComponents();
-        this.parallaxInit();
+        this.$body = $("body");
+        this.init();
     }
 
+    /**
+     * Initialize the application components and features.
+     */
+    init() {
+        this.initBrowserAttributes();
+        this.initComponents();
+        this.initParallax();
+        this.initSimpleBar();
+    }
+
+    /**
+     * Initialize all core components of the application.
+     */
     initComponents() {
-        const t = this;
-        const $doc = t.$doc;
-        t.simpleBarInit();
-        $doc.ready(function () {
+        this.$doc.ready(() => {
             burger();
             accordion();
             numberInput();
             showPassword();
-            t.setBrowserDataName();
             selectrickInit();
             toggler();
             creditCart();
             fancyboxInit();
-            const chart = new Charts();
+            new Charts();
         });
     }
 
-    simpleBarInit() {
+    /**
+     * Initialize SimpleBar for scrollable content.
+     */
+    initSimpleBar() {
         window.ResizeObserver = ResizeObserver;
-        const simpleBarContainers = document.querySelectorAll('.scrollable-content');
-        simpleBarContainers.forEach(function (simpleBarContainer) {
-            const simpleBarInstance = new SimpleBar(simpleBarContainer);
-            if (simpleBarContainer.classList.contains('table-wrapper')) {
-                const thead = simpleBarContainer.querySelector('thead');
-                const tableHeader = simpleBarContainer.querySelector('.evolution-table-head');
-                if (thead) {
-                    let diffTranslateY = 0;
-                    if (tableHeader) {
-                        diffTranslateY = tableHeader.offsetHeight;
-                    }
-                    const scrollElement = simpleBarInstance.getScrollElement();
-                    scrollElement.addEventListener('scroll', () => {
-                        const scrollTop = scrollElement.scrollTop;
-                        const scrollHeight = scrollElement.scrollHeight;
-                        const clientHeight = scrollElement.clientHeight;
-                        const maxScrollValue = scrollHeight - clientHeight;
-                        let translateY = scrollTop === 0 ? scrollTop : scrollTop - 2;
-                        if (diffTranslateY) {
-                            translateY = scrollTop === 0 ? translateY : translateY - diffTranslateY;
-                        }
-                        thead.style.transform = `translateY(${translateY}px)`;
-                        if (scrollTop > 20) {
-                            thead.classList.add('moved');
-                        } else {
-                            thead.classList.remove('moved');
-                        }
-                    });
-                }
 
+        document.querySelectorAll(".scrollable-content").forEach(container => {
+            const simpleBarInstance = new SimpleBar(container);
+
+            if (container.classList.contains("table-wrapper")) {
+                this.handleTableScroll(container, simpleBarInstance);
             }
         });
     }
 
-    parallaxInit() {
-        const t = this;
-        const $doc = t.$doc;
-        $doc.ready(function () {
-            $doc.find('.section').each(function () {
-                const $section = $(this);
-                const $elements = $section.find('.parallax-element');
+    /**
+     * Handle scroll events for table wrappers to synchronize the header position.
+     * @param {HTMLElement} container
+     * @param {SimpleBar} simpleBarInstance
+     */
+    handleTableScroll(container, simpleBarInstance) {
+        const thead = container.querySelector("thead");
+        const tableHeader = container.querySelector(".evolution-table-head");
+
+        if (!thead) return;
+
+        const diffTranslateY = tableHeader ? tableHeader.offsetHeight : 0;
+        const scrollElement = simpleBarInstance.getScrollElement();
+
+        scrollElement.addEventListener("scroll", () => {
+            const scrollTop = scrollElement.scrollTop;
+            const translateY = Math.max(0, scrollTop - diffTranslateY);
+
+            thead.style.transform = `translateY(${translateY}px)`;
+
+            if (scrollTop > 20) {
+                thead.classList.add("moved");
+            } else {
+                thead.classList.remove("moved");
+            }
+        });
+    }
+
+    /**
+     * Initialize parallax effects for elements with the class 'parallax-element'.
+     */
+    initParallax() {
+        this.$doc.ready(() => {
+            $(".section").each((_, section) => {
+                const $section = $(section);
+                const $elements = $section.find(".parallax-element");
+
                 if ($elements.length > 0) {
                     _parallax({
-                        selector: '.parallax-element',
-                        wrapper: $section[0]
+                        selector: ".parallax-element",
+                        wrapper: $section[0],
                     });
                 }
             });
         });
     }
 
-    setBrowserDataName() {
-        const t = this;
-        const $body = t.$body;
-        const name = detectBrowser();
-        $body.attr('data-browser', name).addClass(name);
-        if (isMobile) $body.attr('data-mobile', 'mobile');
+    /**
+     * Set browser and device attributes on the <body> tag.
+     */
+    initBrowserAttributes() {
+        const browserName = detectBrowser();
+        this.$body.attr("data-browser", browserName).addClass(browserName);
+
+        if (isMobile) {
+            this.$body.attr("data-mobile", "mobile");
+        }
     }
 }

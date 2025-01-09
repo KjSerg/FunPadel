@@ -1,5 +1,3 @@
-
-
 export const burger = () => {
     const $doc = $(document);
     $doc.on('click', '.burger', function (e) {
