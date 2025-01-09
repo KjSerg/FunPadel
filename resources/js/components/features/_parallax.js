@@ -1,4 +1,4 @@
-import {isEven, randomIntFromInterval, invertNumber, isMobile} from "./_helpers";
+import {isEven, randomIntFromInterval, invertNumber, isMobile} from "../utils/_helpers";
 
 export const _parallax = (args = {}) => {
     let {selector, wrapper} = args;

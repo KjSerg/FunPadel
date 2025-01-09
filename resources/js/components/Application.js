@@ -1,18 +1,18 @@
-import {burger} from "./_burger";
-import {accordion} from "./_accardion";
-import {numberInput} from "./_number-input";
-import {_parallax} from "./_parallax";
+import {burger} from "./ ui/_burger";
+import {accordion} from "./ ui/_accardion";
+import {numberInput} from "./forms/_number-input";
+import {_parallax} from "./features/_parallax";
 import './$.title'
-import {detectBrowser, isMobile} from "./_helpers";
-import {showPassword} from "./_show-password";
-import {selectrickInit} from "./_selectrickInit";
+import {detectBrowser, isMobile} from "./utils/_helpers";
+import {showPassword} from "./forms/_show-password";
+import {selectrickInit} from "./forms/_selectrickInit";
 import SimpleBar from "simplebar";
 import 'simplebar/dist/simplebar.css';
 import ResizeObserver from 'resize-observer-polyfill';
-import {toggler} from "./_togglers";
-import {creditCart} from "./_credit-card";
-import {fancyboxInit} from "./fancybox-init";
-import {Charts} from "./Charts";
+import {toggler} from "./ ui/_togglers";
+import {creditCart} from "./forms/_credit-card";
+import {fancyboxInit} from "../plugins/fancybox-init";
+import {Charts} from "./charts/Charts";
 
 export default class Application {
     constructor() {

@@ -19,16 +19,16 @@ mix.js('resources/js/app.js', 'js')
         require('cssnano')()
     ]
 });
-if (mix.inProduction()) {
-    mix.version();
-}
-mix.browserSync({
-    proxy: false,
-    server: {
-        baseDir: public
-    },
-    files: [
-        `${public}**/*`,
-        `*.html`
-    ]
-});
+// if (mix.inProduction()) {
+//     mix.version();
+// }
+// mix.browserSync({
+//     proxy: false,
+//     server: {
+//         baseDir: public
+//     },
+//     files: [
+//         `${public}**/*`,
+//         `*.html`
+//     ]
+// });
