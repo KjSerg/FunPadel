@@ -109,6 +109,10 @@
       }
     }
 
+    &.mini{
+      width: calc(25% - 0.8rem);
+    }
+
     &.error{
       color: red;
       .form-label-error{

@@ -124,54 +124,94 @@
                 </div>
             </div>
             <a href="#" class="about-season-section__button button">
-                <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-  <path d="M3.42495 7.50001H14.575C14.8583 7.50001 15.0958 7.40418 15.2875 7.21251C15.4791 7.02085 15.575 6.78335 15.575 6.50001C15.575 6.21668 15.4791 5.97918 15.2875 5.78751C15.0958 5.59585 14.8583 5.50001 14.575 5.50001H3.42495L6.27495 2.65001C6.47495 2.45001 6.57078 2.21668 6.56245 1.95001C6.55412 1.68335 6.45828 1.45001 6.27495 1.25001C6.07495 1.05001 5.83745 0.945845 5.56245 0.937512C5.28745 0.929178 5.04995 1.02501 4.84995 1.22501L0.274951 5.80001C0.174951 5.90001 0.104118 6.00835 0.0624514 6.12501C0.0207844 6.24168 -4.86374e-05 6.36668 -4.86374e-05 6.50001C-4.86374e-05 6.63335 0.0207844 6.75835 0.0624514 6.87501C0.104118 6.99168 0.174951 7.10001 0.274951 7.20001L4.84995 11.775C5.04995 11.975 5.28745 12.0708 5.56245 12.0625C5.83745 12.0542 6.07495 11.95 6.27495 11.75C6.45828 11.55 6.55412 11.3167 6.56245 11.05C6.57078 10.7833 6.47495 10.55 6.27495 10.35L3.42495 7.50001Z" fill="white"/>
+                <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13"
+                                        fill="none">
+  <path d="M3.42495 7.50001H14.575C14.8583 7.50001 15.0958 7.40418 15.2875 7.21251C15.4791 7.02085 15.575 6.78335 15.575 6.50001C15.575 6.21668 15.4791 5.97918 15.2875 5.78751C15.0958 5.59585 14.8583 5.50001 14.575 5.50001H3.42495L6.27495 2.65001C6.47495 2.45001 6.57078 2.21668 6.56245 1.95001C6.55412 1.68335 6.45828 1.45001 6.27495 1.25001C6.07495 1.05001 5.83745 0.945845 5.56245 0.937512C5.28745 0.929178 5.04995 1.02501 4.84995 1.22501L0.274951 5.80001C0.174951 5.90001 0.104118 6.00835 0.0624514 6.12501C0.0207844 6.24168 -4.86374e-05 6.36668 -4.86374e-05 6.50001C-4.86374e-05 6.63335 0.0207844 6.75835 0.0624514 6.87501C0.104118 6.99168 0.174951 7.10001 0.274951 7.20001L4.84995 11.775C5.04995 11.975 5.28745 12.0708 5.56245 12.0625C5.83745 12.0542 6.07495 11.95 6.27495 11.75C6.45828 11.55 6.55412 11.3167 6.56245 11.05C6.57078 10.7833 6.47495 10.55 6.27495 10.35L3.42495 7.50001Z"
+        fill="white"/>
 </svg></span>
                 Go back
             </a>
             <div class="payment">
                 <div class="payment-forms">
-                    <div class="payment-form-wrapper">
-                        <div class="payment-form-head">
+                    <div class="payment-form-wrapper accordion">
+                        <div class="payment-form-head accordion-head">
                             <div class="payment-form-method">
-                               <span></span> Credit or debit card
+                                <span></span>
+                                Credit or debit card
                             </div>
                             <div class="payment-form-gallery">
                                 <div class="payment-form-gallery__icon"><img src="img/1mastercard.svg" alt=""></div>
                                 <div class="payment-form-gallery__icon"><img src="img/visa.svg" alt=""></div>
                             </div>
                         </div>
-                       <form class="payment-form form">
-                           <label  class="form-label">
-                               <span class="form-label-head">Card number</span>
-                               <input type="text" class="card-number" placeholder="Enter the number indicated on your card">
-                           </label>
-                           <label  class="form-label">
-                               <span class="form-label-head">Month/year</span>
-                               <input type="text" class="expiry-date" placeholder="Month/year">
-                           </label>
-                           <label  class="form-label">
-                               <span class="form-label-head">CVV</span>
-                               <input type="text" class="cvv" placeholder="CVV">
-                           </label>
-                       </form>
+                        <div class="accordion-content payment-form-hide">
+                            <form class="payment-form form ">
+                                <label class="form-label half">
+                                    <span class="form-label-head">Card number</span>
+                                    <input type="text" class="card-number"
+                                           placeholder="Enter the number indicated on your card">
+                                </label>
+                                <label class="form-label mini">
+                                    <span class="form-label-head">Month/year</span>
+                                    <input type="text" class="expiry-date" placeholder="Month/year">
+                                </label>
+                                <label class="form-label mini">
+                                    <span class="form-label-head">CVV</span>
+                                    <input type="text" class="cvv" placeholder="CVV">
+                                </label>
+                                <button class="button--blue button">
+                                    Buy now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="payment-form-wrapper accordion">
+                        <div class="payment-form-head accordion-head">
+                            <div class="payment-form-method">
+                                <span></span>
+                                Stripe
+                            </div>
+                            <div class="payment-form-gallery">
+                                <div class="payment-form-gallery__icon"><img src="img/stripe.svg" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="accordion-content payment-form-hide">
+                            <form class="payment-form form ">
+                                <button class="button--blue button">
+                                    Buy now
+                                </button>
+                                <a href="#subscription-modal" class="button fancybox">
+                                    Subscription completed
+                                </a>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
                 <ul class="about-season-list about-season-list--payment">
                     <li class="about-season-list-item" style="color: #FF5FCC">
                         <div class="about-season-list-item__head">
-                            <div class="icon"><img src="img/as1.svg" alt=""></div> full
+                            <div class="icon"><img src="img/as1.svg" alt=""></div>
+                            full
                         </div>
                         <div class="about-season-list-item-body">
                             <ul class="about-season-list-item-info">
                                 <li class="decor">
-                                <svg width="8" height="49" viewBox="0 0 8 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill="#FF5FCC" d="M3.64645 48.3536C3.84171 48.5488 4.15829 48.5488 4.35356 48.3536L7.53554 45.1716C7.7308 44.9763 7.7308 44.6597 7.53554 44.4645C7.34027 44.2692 7.02369 44.2692 6.82843 44.4645L4 47.2929L1.17157 44.4645C0.976313 44.2692 0.65973 44.2692 0.464468 44.4645C0.269206 44.6597 0.269206 44.9763 0.464468 45.1716L3.64645 48.3536ZM3.5 2.18557e-08L3.5 4L4.5 4L4.5 -2.18557e-08L3.5 2.18557e-08ZM3.5 12L3.5 20L4.5 20L4.5 12L3.5 12ZM3.5 28L3.5 36L4.5 36L4.5 28L3.5 28ZM3.5 44L3.5 48L4.5 48L4.5 44L3.5 44Z"  fill-opacity="0.7"/>
+                                <svg width="8" height="49" viewBox="0 0 8 49" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+<path fill="#FF5FCC"
+      d="M3.64645 48.3536C3.84171 48.5488 4.15829 48.5488 4.35356 48.3536L7.53554 45.1716C7.7308 44.9763 7.7308 44.6597 7.53554 44.4645C7.34027 44.2692 7.02369 44.2692 6.82843 44.4645L4 47.2929L1.17157 44.4645C0.976313 44.2692 0.65973 44.2692 0.464468 44.4645C0.269206 44.6597 0.269206 44.9763 0.464468 45.1716L3.64645 48.3536ZM3.5 2.18557e-08L3.5 4L4.5 4L4.5 -2.18557e-08L3.5 2.18557e-08ZM3.5 12L3.5 20L4.5 20L4.5 12L3.5 12ZM3.5 28L3.5 36L4.5 36L4.5 28L3.5 28ZM3.5 44L3.5 48L4.5 48L4.5 44L3.5 44Z"
+      fill-opacity="0.7"/>
 </svg>
                                 </li>
-                                <li><span style="background-color: #FF5FCC;"></span> Start: September 1</li>
-                                <li><span style="background-color: #FF5FCC;"></span> End: November 30</li>
+                                <li>
+                                    <span style="background-color: #FF5FCC;"></span>
+                                    Start: September 1
+                                </li>
+                                <li>
+                                    <span style="background-color: #FF5FCC;"></span>
+                                    End: November 30
+                                </li>
 
                             </ul>
                         </div>
@@ -243,6 +283,21 @@
     <div class="modal__title changed-card-modal__title text-center">Cancel subscription</div>
     <div class="modal__text text text-center">
         <p>Your subscription will be canceled, confirm that you want to cancel the subscription.</p>
+    </div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        Ok
+    </a>
+</div>
+
+<div class="modal changed-card-modal" id="subscription-modal">
+    <div class="changed-card-modal__image">
+        <img src="img/check-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">
+        Subscription completed
+    </div>
+    <div class="modal__text text text-center">
+        <p>Your FULL subscription has been successfully completed, you can now use the subscription features and more.</p>
     </div>
     <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
         Ok

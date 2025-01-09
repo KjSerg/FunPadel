@@ -31,6 +31,9 @@
 
     .section-decor {
       span {
+        &:nth-child(1){
+          left: -40rem;
+        }
         &:nth-child(2) {
           right: -50rem;
         }
@@ -209,6 +212,10 @@
       width: 38rem;
       flex-direction: column;
 
+      @media (max-width: 700px){
+        width: 100%;
+        max-width: 60rem;
+      }
       & > * {
         width: 100%;
       }

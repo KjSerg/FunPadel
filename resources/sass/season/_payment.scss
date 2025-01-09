@@ -1,13 +1,53 @@
 .payment {
   display: flex;
   align-items: flex-start;
+  @media (max-width: 700px){
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 
   &-forms {
     width: calc(100% - 40rem);
     margin-right: 2rem;
+    @media (max-width: 700px){
+      margin-right: 0;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 60rem;
+    }
   }
 
   &-form {
+    padding-top: 4rem;
+    will-change: transform;
+    &-hide{
+      display: none;
+    }
+    .form-label{
+      @media (max-width: 767px){
+        margin-bottom: 1rem;
+      }
+      &.half{
+        @media (max-width: 1000px){
+          width: 100%;
+        }
+      }
+      &.mini{
+        @media (max-width: 1000px){
+          width: calc(50% - 0.8rem);
+        }
+        @media (max-width: 767px){
+          width: 100%;
+        }
+      }
+    }
+    button{
+      display: inline-flex;
+      max-width: 31rem;
+      @media (max-width: 768px){
+        max-width: 100%;
+      }
+    }
     &-gallery{
       display: flex;
       flex-wrap: wrap;
@@ -22,13 +62,6 @@
         flex-shrink: 0;
       }
     }
-    &-wrapper{
-      padding: 4rem;
-      border-radius: 1.8rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(86, 86, 114, 0.15);
-      backdrop-filter: blur(15px);
-    }
     &-method{
       margin-bottom: 1.6rem;
       position: relative;
@@ -39,6 +72,12 @@
       font-weight: 700;
       line-height: 140%;
       text-transform: uppercase;
+      cursor: pointer;
+      @media (max-width: 500px){
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 120%;
+      }
       span{
         position: absolute;
         display: block;
@@ -49,6 +88,9 @@
         border-radius: 50%;
         border: 1px solid #fff;
         transition: border-color 0.2s ease-in-out;
+        @media (max-width: 500px){
+          top: 0;
+        }
         &:after{
           position: absolute;
           content: '';
@@ -67,6 +109,29 @@
     }
     &-head{
       padding-left: 4rem;
+    }
+    &-wrapper{
+      padding: 4rem;
+      border-radius: 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(86, 86, 114, 0.15);
+      backdrop-filter: blur(15px);
+      @media (max-width: 1024px){
+        padding: 2rem;
+      }
+      &:not(:last-child){
+        margin-bottom: 2.4rem;
+      }
+      &.active{
+        .payment-form-method{
+          span{
+            border-color: #3D73FF;
+            &:after{
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
   }
 }
