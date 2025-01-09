@@ -1,226 +1,186 @@
 import Chart from 'chart.js/auto';
-import {log10} from "chart.js/helpers";
 
 export class Charts {
     constructor() {
         this.resizeListener = false;
         this.resizeListenerEnabled = false;
         this.lastWidth = window.innerWidth;
-        this.initLoop();
-        this.resizeEventListener();
-        this.formEventListener();
+        this.charts = {};
+        this.notResponsiveCharts = {};
+        this.testData = {
+            "26.04.1993": 200,
+            "26.04.2003": 20,
+            "26.04.2013": 209,
+            "26.04.2023": 4,
+            "20.01.2024": 104,
+            "08.04.2024": 150,
+            "15.08.2024": 184,
+            "22.10.2024": 92,
+            "05.01.2025": 222
+        };
+
+        this.initialize();
     }
 
-    charts = {};
+    initialize() {
+        this.initLoop();
+        this.initResizeListener();
+        this.initFormEventListener();
+    }
 
-    notResponsiveCharts = {};
+    initResizeListener() {
+        if (!this.resizeListener || this.resizeListenerEnabled) return;
 
-    testData = {
-        "26.04.1993": 200,
-        "26.04.2003": 20,
-        "26.04.2013": 209,
-        "26.04.2023": 4,
-        "20.01.2024": 104,
-        "08.04.2024": 150,
-        "15.08.2024": 184,
-        "22.10.2024": 92,
-        "05.01.2025": 222
-    };
-
-    resizeEventListener() {
-        const t = this;
-        const resizeListener = t.resizeListener;
-        const resizeListenerEnabled = t.resizeListenerEnabled;
-        const lastWidth = t.lastWidth;
-        if (!resizeListener) return;
-        if (resizeListenerEnabled) return;
-        t.resizeListenerEnabled = true;
+        this.resizeListenerEnabled = true;
         let resizeTimer = null;
+
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                let currentWidth = window.innerWidth;
-                if (lastWidth !== currentWidth) {
-                    t.lastWidth = currentWidth;
-                    for (let id in t.notResponsiveCharts) {
-                        t.reInitChartElementByID(id);
-                    }
+                const currentWidth = window.innerWidth;
+                if (this.lastWidth !== currentWidth) {
+                    this.lastWidth = currentWidth;
+                    Object.keys(this.notResponsiveCharts).forEach(id => {
+                        this.reInitChartById(id);
+                    });
                 }
             }, 500);
         });
     }
 
-    reInitChartElementByID(id) {
-        const t = this;
-        const el = document.getElementById(id);
-        t.notResponsiveCharts[id].destroy();
-        t.charts[id] = null;
-        t.notResponsiveCharts[id] = null;
-        el.classList.remove('chart-init');
-        el.removeAttribute('width');
-        el.removeAttribute('style');
-        t.chartItemInit(el);
+    reInitChartById(id) {
+        const chartElement = document.getElementById(id);
+        if (chartElement) this.reInitChartByElement(chartElement);
     }
 
-    reInitChartElementByElement(el) {
-        const t = this;
-        const id = el.getAttribute('id');
-        t.notResponsiveCharts[id].destroy();
-        t.charts[id] = null;
-        t.notResponsiveCharts[id] = null;
-        el.classList.remove('chart-init');
-        el.removeAttribute('width');
-        el.removeAttribute('style');
-        t.chartItemInit(el);
+    reInitChartByElement(element) {
+        const id = element.getAttribute('id');
+        if (!this.notResponsiveCharts[id]) return;
+
+        this.notResponsiveCharts[id].destroy();
+        this.charts[id] = null;
+        this.notResponsiveCharts[id] = null;
+        element.classList.remove('chart-init');
+        element.removeAttribute('width');
+        element.removeAttribute('style');
+        this.initChart(element);
     }
 
     initLoop() {
-        const t = this;
-        document.querySelectorAll('.chart').forEach(function (chartElement, index) {
-            let id = chartElement.getAttribute('id');
-            if (id === null) {
-                id = 'chart-js-' + index;
-                chartElement.setAttribute('id', 'chart-js-' + index);
+        document.querySelectorAll('.chart').forEach((chartElement, index) => {
+            if (!chartElement.getAttribute('id')) {
+                chartElement.setAttribute('id', `chart-js-${index}`);
             }
             chartElement.classList.add('loading');
-            t.chartItemInit(chartElement);
+            this.initChart(chartElement);
         });
-
     }
 
-    chartItemInit(chartElement) {
-        const t = this;
+    initChart(chartElement) {
         const id = chartElement.getAttribute('id');
-        const jsonUrl = chartElement.getAttribute('data-source');
+        const dataSource = chartElement.getAttribute('data-source');
+
         if (chartElement.classList.contains('is-test')) {
-            t.setParametersAndRenderChart({
-                json: t.testData,
-                element: chartElement
-            })
-            return;
-        }
-        if (jsonUrl !== undefined && !chartElement.classList.contains('chart-init')) {
-            caches.open(jsonUrl).then(cache => {
-                cache.match(jsonUrl).then(async cachedResponse => {
-                    if (cachedResponse) {
-                        cachedResponse.json().then(json => t.setParametersAndRenderChart({
-                            json: json, element: chartElement
-                        }));
-                    } else {
-                        fetch(jsonUrl).then(response => {
-                            cache.put(jsonUrl, response.clone());
-                            response.json().then(json => t.setParametersAndRenderChart({
-                                json: json, element: chartElement
-                            }));
-                        });
-                    }
-                });
+            this.renderChart(chartElement, this.testData);
+        } else if (dataSource && !chartElement.classList.contains('chart-init')) {
+            this.fetchChartData(dataSource).then(data => {
+                if (data) this.renderChart(chartElement, data);
             });
         }
     }
 
-    setParametersAndRenderChart(args = {}) {
-        const t = this;
-        const json = args.json;
-        const element = args.element;
-        if (json === undefined) return;
-        if (element === undefined) return;
+    async fetchChartData(url) {
+        try {
+            const cache = await caches.open(url);
+            const cachedResponse = await cache.match(url);
+
+            if (cachedResponse) {
+                return cachedResponse.json();
+            } else {
+                const response = await fetch(url);
+                cache.put(url, response.clone());
+                return response.json();
+            }
+        } catch (error) {
+            console.error(`Failed to fetch data from ${url}:`, error);
+            return null;
+        }
+    }
+
+    renderChart(element, data) {
+        if (!data || !element) return;
+
         const id = element.getAttribute('id');
-        const labels = Object.keys(json);
-        const values = Object.values(json);
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Rating',
-                data: values,
-                fill: 'start',
-                borderColor: 'rgba(61, 115, 255, 0.6)',
-                tension: 0.4,
-                backgroundColor: 'rgba(61, 115, 255, 0.05)',
-                hoverBackgroundColor: 'rgba(61, 115, 255, 0.1)',
-                pointBackgroundColor: 'rgba(61, 115, 255, 0.8)',
-                pointBorderColor: 'rgba(61, 115, 255, 0.4)',
-                pointBorderWidth: 10,
-                color: '#ffffff',
-            }]
-        };
-        const options = {
-            responsive: true,
-            plugins: {
-                tooltip: {
-                    titleColor: 'white',
-                    bodyColor: 'white'
-                }
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+
+        const chartConfig = {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Rating',
+                    data: values,
+                    fill: 'start',
+                    borderColor: 'rgba(61, 115, 255, 0.6)',
+                    tension: 0.4,
+                    backgroundColor: 'rgba(61, 115, 255, 0.05)',
+                    pointBackgroundColor: 'rgba(61, 115, 255, 0.8)',
+                }]
             },
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'white'
-                    },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.03)',
-                        borderDash: [10, 5]
+            options: {
+                responsive: !element.classList.contains('not-responsive'),
+                plugins: {
+                    tooltip: {
+                        titleColor: 'white',
+                        bodyColor: 'white'
                     }
                 },
-                y: {
-                    ticks: {
-                        color: 'white'
+                scales: {
+                    x: {
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255, 255, 255, 0.03)', borderDash: [10, 5] }
                     },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.03)',
-                        borderDash: [10, 5]
+                    y: {
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255, 255, 255, 0.03)', borderDash: [10, 5] }
                     }
                 }
             }
         };
+
+        const chartInstance = new Chart(element, chartConfig);
+        this.charts[id] = chartInstance;
+
         if (element.classList.contains('not-responsive')) {
-            options.responsive = false;
-            t.resizeListener = true;
+            this.notResponsiveCharts[id] = chartInstance;
+            this.resizeListener = true;
         }
-        const config = {
-            type: 'line',
-            data: data,
-            options: options
-        };
-        console.log(options)
-        t.charts[id] = new Chart(element, config);
-        if (element.classList.contains('not-responsive')) {
-            t.notResponsiveCharts[id] = t.charts[id];
-        }
+
         element.classList.add('chart-init');
-        setTimeout(function () {
-            element.classList.remove('loading');
-        }, 10);
+        element.classList.remove('loading');
     }
 
-    formEventListener() {
-        const t = this;
-        document.querySelectorAll('.chart-filter').forEach(function (form) {
-            form.querySelectorAll('input').forEach(function (el) {
-                el.addEventListener('change', function () {
+    initFormEventListener() {
+        document.querySelectorAll('.chart-filter').forEach(form => {
+            form.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('change', () => {
                     form.dispatchEvent(new Event('submit'));
-                })
-            })
-            form.addEventListener('submit', function (e) {
+                });
+            });
+
+            form.addEventListener('submit', e => {
                 e.preventDefault();
                 const action = form.getAttribute('action');
-                const selector = form.getAttribute('data-chart');
-                if (selector === null) return;
-                const chartElement = document.querySelector(selector);
-                if (chartElement === null) return;
-                const formData = new FormData(form);
-                let url = action + '?';
-                let arr = [];
-                for (const [key, value] of formData.entries()) {
-                    arr.push(`${key}=${value}`);
+                const chartSelector = form.getAttribute('data-chart');
+                const chartElement = document.querySelector(chartSelector);
+
+                if (chartElement) {
+                    const formData = new URLSearchParams(new FormData(form)).toString();
+                    chartElement.setAttribute('data-source', `${action}?${formData}`);
+                    this.reInitChartByElement(chartElement);
                 }
-                url = encodeURI(url + arr.join('&'));
-                chartElement.setAttribute('data-source', url);
-                t.reInitChartElementByElement(chartElement);
             });
-        });
-        $(document).on('change', '.chart-filter select', function () {
-            $(this).closest('form')[0].dispatchEvent(new Event('submit'));
         });
     }
 }

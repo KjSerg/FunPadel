@@ -2,7 +2,6 @@ import {burger} from "./ ui/_burger";
 import {accordion} from "./ ui/_accardion";
 import {numberInput} from "./forms/_number-input";
 import {_parallax} from "./features/_parallax";
-import './$.title'
 import {detectBrowser, isMobile} from "./utils/_helpers";
 import {showPassword} from "./forms/_show-password";
 import {selectrickInit} from "./forms/_selectrickInit";
