@@ -12,6 +12,7 @@ import { fancyboxInit } from "../plugins/fancybox-init";
 import { Charts } from "./charts/Charts";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
+import {fileLoader} from "./forms/_file-loader";
 
 export default class Application {
     constructor() {
@@ -43,6 +44,7 @@ export default class Application {
             toggler();
             creditCart();
             fancyboxInit();
+            fileLoader();
             new Charts();
         });
     }

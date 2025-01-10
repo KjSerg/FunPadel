@@ -5682,6 +5682,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _charts_Charts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./charts/Charts */ "./resources/js/components/charts/Charts.js");
 /* harmony import */ var _ui_burger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/_burger */ "./resources/js/components/ui/_burger.js");
 /* harmony import */ var _ui_accardion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui/_accardion */ "./resources/js/components/ui/_accardion.js");
+/* harmony import */ var _forms_file_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./forms/_file-loader */ "./resources/js/components/forms/_file-loader.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -5689,6 +5690,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -5738,6 +5740,7 @@ var Application = /*#__PURE__*/function () {
         (0,_ui_togglers__WEBPACK_IMPORTED_MODULE_8__.toggler)();
         (0,_forms_credit_card__WEBPACK_IMPORTED_MODULE_9__.creditCart)();
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_10__.fancyboxInit)();
+        (0,_forms_file_loader__WEBPACK_IMPORTED_MODULE_14__.fileLoader)();
         new _charts_Charts__WEBPACK_IMPORTED_MODULE_11__.Charts();
       });
     }
@@ -6154,6 +6157,53 @@ var creditCart = function creditCart() {
     });
   });
 };
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/_file-loader.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/forms/_file-loader.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   fileLoader: () => (/* binding */ fileLoader)
+/* harmony export */ });
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+var fileLoader = function fileLoader() {
+  var fileInputs = document.querySelectorAll('input[type="file"][data-limit]');
+  fileInputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      var file = event.target.files[0];
+      var dataLimit = parseInt(input.dataset.limit, 10) * 1024 * 1024;
+      var preview = input.closest(".form-avatar-label").querySelector(".preview img");
+      if (file) {
+        if (file.size > dataLimit) {
+          input.value = "";
+          setDefaultImage(preview);
+          $.fancybox.open($('#file-error-modal'));
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          if (preview) {
+            preview.src = e.target.result;
+          }
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setDefaultImage(preview);
+      }
+    });
+  });
+};
+function setDefaultImage(preview) {
+  if (preview) {
+    preview.src = preview.getAttribute('data-default');
+  }
+}
 
 /***/ }),
 

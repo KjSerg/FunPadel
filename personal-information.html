@@ -183,14 +183,26 @@
                </div>
                 <div class="personal-section-wrap">
                     <div class="personal-information">
-                        <div class="title-page personal-information__title">
-                            Personal information
+                        <div class="personal-information-head">
+                            <div class="personal-information-head-text">
+                                <div class="title-page personal-information__title">
+                                    Personal information
+                                </div>
+                                <div class="personal-information__subtitle text">
+                                    <p>
+                                        All your personal information is here and you can change it at any time.
+                                    </p>
+                                </div>
+                            </div>
+                            <form class="personal-information-avatar form-avatar">
+                                <label class="form-avatar-label" title="max file size 1MB">
+                                    <input type="file" name="avatar" accept="image/png, image/jpeg, image/heif, image/bmp, .heic" data-limit="1">
+                                    <span class="preview"><img data-default="img/user.jpg" src="img/user.jpg" alt=""></span>
+                                    <span class="icon"><img src="img/edit-2.svg" alt=""></span>
+                                </label>
+                            </form>
                         </div>
-                        <div class="personal-information__subtitle text">
-                            <p>
-                                All your personal information is here and you can change it at any time.
-                            </p>
-                        </div>
+
                         <form novalidate class="personal-information-form form">
                             <label class="form-label half">
                                 <span class="form-label-head">First name</span>
@@ -265,6 +277,15 @@
         </div>
     </section>
 </main>
+<div class="modal changed-card-modal" id="file-error-modal">
+    <div class="changed-card-modal__image">
+        <img src="img/error-x-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">Max file size 1MB</div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        OK
+    </a>
+</div>
 <script src="js/app.js"></script>
 </body>
 </html>
