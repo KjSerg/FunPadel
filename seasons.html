@@ -149,7 +149,7 @@
                         <div class="about-season-list-item-price">
                             240,99 USD <s>320,99 USD</s>
                         </div>
-                        <a href="#" class="about-season-list-item-price__button button button--blue">Choose</a>
+                        <a href="#payment-successful" class="about-season-list-item-price__button button button--blue fancybox">Choose</a>
                     </div>
 
                 </li>
@@ -173,7 +173,7 @@
                         <div class="about-season-list-item-price">
                             129,99 USD
                         </div>
-                        <a href="#" class="about-season-list-item-price__button button button--blue">Choose</a>
+                        <a href="#payment-error" class="about-season-list-item-price__button button button--blue fancybox">Choose</a>
                     </div>
 
                 </li>
@@ -285,6 +285,34 @@
     <div class="modal__title changed-card-modal__title text-center">Cancel subscription</div>
     <div class="modal__text text text-center">
         <p>Your subscription will be canceled, confirm that you want to cancel the subscription.</p>
+    </div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        Ok
+    </a>
+</div>
+<div class="modal changed-card-modal" id="payment-successful">
+    <div class="changed-card-modal__image">
+        <img src="img/check-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">
+        Payment successful
+    </div>
+    <div class="modal__text text text-center">
+        <p>The payment was successful, you can now use the features.</p>
+    </div>
+    <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
+        Ok
+    </a>
+</div>
+<div class="modal changed-card-modal" id="payment-error">
+    <div class="changed-card-modal__image">
+        <img src="img/error-x-img.png" alt="">
+    </div>
+    <div class="modal__title changed-card-modal__title text-center">
+        Payment error
+    </div>
+    <div class="modal__text text text-center">
+        <p>Payment error, please try again later or contact support.</p>
     </div>
     <a href="#" class="button button--blue changed-card-modal__button close-fancybox-modal">
         Ok
