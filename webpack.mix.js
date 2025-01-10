@@ -22,13 +22,13 @@ mix.js('resources/js/app.js', 'js')
 // if (mix.inProduction()) {
 //     mix.version();
 // }
-mix.browserSync({
-    proxy: false,
-    server: {
-        baseDir: public
-    },
-    files: [
-        `${public}**/*`,
-        `*.html`
-    ]
-});
+// mix.browserSync({
+//     proxy: false,
+//     server: {
+//         baseDir: public
+//     },
+//     files: [
+//         `${public}**/*`,
+//         `*.html`
+//     ]
+// });

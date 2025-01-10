@@ -1,0 +1,15 @@
+.game-history{
+  &-status{
+    color:  #3D73FF;
+    &.new{
+      color:#5AED69;
+    }
+  }
+  &-table{
+    &__button{
+      display: inline-flex;
+      width: auto;
+      padding: 1.4rem 2rem;
+    }
+  }
+}
