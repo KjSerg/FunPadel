@@ -1,18 +1,19 @@
-import { numberInput } from "./forms/_number-input";
-import { _parallax } from "./features/_parallax";
-import { detectBrowser, isMobile } from "./utils/_helpers";
-import { showPassword } from "./forms/_show-password";
-import { selectrickInit } from "./forms/_selectrickInit";
+import {numberInput} from "./forms/_number-input";
+import {_parallax} from "./features/_parallax";
+import {detectBrowser, isMobile, showPreloader} from "./utils/_helpers";
+import {showPassword} from "./forms/_show-password";
+import {selectrickInit} from "./forms/_selectrickInit";
 import SimpleBar from "simplebar";
 import "simplebar/dist/simplebar.css";
 import ResizeObserver from "resize-observer-polyfill";
-import { toggler } from "./ui/_togglers";
-import { creditCart } from "./forms/_credit-card";
-import { fancyboxInit } from "../plugins/fancybox-init";
-import { Charts } from "./charts/Charts";
+import {toggler} from "./ui/_togglers";
+import {creditCart} from "./forms/_credit-card";
+import {fancyboxInit} from "../plugins/fancybox-init";
+import {Charts} from "./charts/Charts";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
 import {fileLoader} from "./forms/_file-loader";
+import FormHandler from './forms/FormHandler'
 
 export default class Application {
     constructor() {
@@ -46,6 +47,14 @@ export default class Application {
             fancyboxInit();
             fileLoader();
             new Charts();
+            const forms = new FormHandler('.form-js');
+            this.showLoaderOnClick();
+        });
+    }
+
+    showLoaderOnClick(){
+        this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e){
+            if(!$(this).attr('href').includes('#')) showPreloader();
         });
     }
 

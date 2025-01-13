@@ -6,6 +6,28 @@
     }
   }
   &-table{
+    table{
+      min-width: 1000px;
+    }
+    &-result{
+      color: #5AED69;
+      &--lose{
+
+        color: #E33351;
+      }
+    }
+    &-opponents{
+      display: flex;
+      width: 100%;
+      border-right: 1px solid rgba(#fff, 0.14);
+      font-weight: 400;
+      & > *{
+        padding-right: 0.5rem;
+        &:first-child{
+          margin-right: 2rem;
+        }
+      }
+    }
     &__button{
       display: inline-flex;
       width: auto;
