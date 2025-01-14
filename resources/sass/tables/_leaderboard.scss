@@ -84,6 +84,9 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      width: 100%;
+      padding-right: 5rem;
+      text-align: left;
       .avatar{
         margin-right: 1rem;
         display: flex;
@@ -95,6 +98,24 @@
         flex-grow: 0;
         border-radius: 50%;
         overflow: hidden;
+      }
+      .points{
+        display: inline-block;
+        margin-right: 2rem;
+        color: #FF5FCC;
+      }
+      &--decorative{
+        position: relative;
+        &:after{
+          position: absolute;
+          display: block;
+          content: 'VS';
+          padding: 0 1rem;
+          right: 0;
+          bottom: 100%;
+          line-height: 120%;
+          background-color: #171725;
+        }
       }
     }
     &__status{
