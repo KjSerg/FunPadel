@@ -5682,8 +5682,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _charts_Charts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./charts/Charts */ "./resources/js/components/charts/Charts.js");
 /* harmony import */ var _ui_burger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/_burger */ "./resources/js/components/ui/_burger.js");
 /* harmony import */ var _ui_accardion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui/_accardion */ "./resources/js/components/ui/_accardion.js");
-/* harmony import */ var _forms_file_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./forms/_file-loader */ "./resources/js/components/forms/_file-loader.js");
-/* harmony import */ var _forms_FormHandler__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./forms/FormHandler */ "./resources/js/components/forms/FormHandler.js");
+/* harmony import */ var _forms_FormHandler__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./forms/FormHandler */ "./resources/js/components/forms/FormHandler.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -5691,7 +5690,6 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
 
 
 
@@ -5743,9 +5741,8 @@ var Application = /*#__PURE__*/function () {
         (0,_ui_togglers__WEBPACK_IMPORTED_MODULE_8__.toggler)();
         (0,_forms_credit_card__WEBPACK_IMPORTED_MODULE_9__.creditCart)();
         (0,_plugins_fancybox_init__WEBPACK_IMPORTED_MODULE_10__.fancyboxInit)();
-        (0,_forms_file_loader__WEBPACK_IMPORTED_MODULE_14__.fileLoader)();
         new _charts_Charts__WEBPACK_IMPORTED_MODULE_11__.Charts();
-        var forms = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_15__["default"]('.form-js');
+        var forms = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_14__["default"]('.form-js');
         _this.showLoaderOnClick();
       });
     }
@@ -6157,6 +6154,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var FormHandler = /*#__PURE__*/function () {
   function FormHandler(selector) {
     _classCallCheck(this, FormHandler);
+    this.$document = $(document);
     this.forms = $(document).find(selector);
     this.initialize();
     this.selectInit();
@@ -6165,7 +6163,7 @@ var FormHandler = /*#__PURE__*/function () {
     key: "selectInit",
     value: function selectInit() {
       var t = this;
-      this.forms.find('.set-cities-js').on('change', function (e) {
+      this.$document.find('.set-cities-js').on('change', function (e) {
         var $select = $(this);
         console.log($select);
         var selector = $select.attr('data-cities-selector');
@@ -6185,6 +6183,30 @@ var FormHandler = /*#__PURE__*/function () {
       this.forms.on('submit', function (e) {
         return _this.handleSubmit(e);
       });
+      this.$document.on('change', '.form-avatar input[type="file"]', function (event) {
+        var file = event.target.files[0];
+        var input = $(this)[0];
+        var dataLimit = parseInt(input.dataset.limit, 10) * 1024 * 1024;
+        var preview = input.closest(".form-avatar-label").querySelector(".preview img");
+        if (file) {
+          if (file.size > dataLimit) {
+            input.value = "";
+            setDefaultImage(preview);
+            $.fancybox.open($('#file-error-modal'));
+            return;
+          }
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            if (preview) {
+              preview.src = e.target.result;
+            }
+          };
+          reader.readAsDataURL(file);
+        } else {
+          setDefaultImage(preview);
+        }
+        $(this).closest('form').trigger('submit');
+      });
     }
   }, {
     key: "handleSubmit",
@@ -6202,25 +6224,14 @@ var FormHandler = /*#__PURE__*/function () {
         contentType: false,
         data: formData
       });
-      $form.trigger('reset');
+      if (!$form.hasClass('no-reset')) $form.trigger('reset');
     }
   }, {
     key: "validateForm",
     value: function validateForm($form) {
+      var _this2 = this;
       var isValid = true;
-
-      // Validate selects
-      $form.find('select[required]').each(function (_, select) {
-        var $select = $(select);
-        var $label = $select.closest('.form-label');
-        var value = $select.val();
-        if (Array.isArray(value) && value.length === 0 || value === null || value === undefined) {
-          isValid = false;
-          $label.addClass('error');
-        } else {
-          $label.removeClass('error');
-        }
-      });
+      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
       // Validate inputs and textareas
       $form.find('input, textarea').each(function (_, input) {
@@ -6228,19 +6239,34 @@ var FormHandler = /*#__PURE__*/function () {
         var $label = $input.closest('.form-label');
         var value = $input.val().trim();
         var regExp = $input.data('reg') ? new RegExp($input.data('reg')) : null;
-        if ($input.attr('required')) {
-          if (!value || regExp && !regExp.test(value)) {
-            isValid = false;
-            $input.addClass('error');
-            $label.addClass('error');
-          } else {
-            $input.removeClass('error');
-            $label.removeClass('error');
-          }
+        if ($input.attr('required') && (!value || regExp && !regExp.test(value))) {
+          isValid = false;
+          $input.addClass('error');
+          $label.addClass('error');
+        } else {
+          $input.removeClass('error');
+          $label.removeClass('error');
         }
       });
 
-      // Validate required custom inputs
+      // Validate select elements
+      $form.find('select[required]').each(function (_, select) {
+        var $select = $(select);
+        var $label = $select.closest('.form-label');
+        var value = $select.val();
+        var test = !value || value === null || Array.isArray(value) && value.length === 0;
+        if (test) {
+          isValid = false;
+          $label.addClass('error');
+        } else {
+          $label.removeClass('error');
+        }
+        console.log(test);
+        console.log(value);
+        console.log($label);
+      });
+
+      // Validate custom required inputs
       if (!this.validateRequiredInputs($form)) isValid = false;
 
       // Validate consent checkbox
@@ -6251,27 +6277,52 @@ var FormHandler = /*#__PURE__*/function () {
       } else {
         $consent.closest('.form-consent').removeClass('error');
       }
-      var $password = $form.find('[name="new_password"]');
-      var $password1 = $form.find('[name="new_password_repeat"]');
-      if ($password.length > 0 && $password1.length > 0) {
-        var password = $password.val();
-        var password1 = $password.val();
-        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+      // Helper function for validating passwords
+      var validatePasswordFields = function validatePasswordFields(passwordField1, passwordField2, regex, errorMessage) {
+        var $field1 = $form.find("[name=\"".concat(passwordField1, "\"]"));
+        var $field2 = $form.find("[name=\"".concat(passwordField2, "\"]"));
+        var value1 = $field1.val();
+        var value2 = $field2.val();
         var toggleErrorClass = function toggleErrorClass(hasError) {
-          [$password, $password1].forEach(function ($field) {
+          [$field1, $field2].forEach(function ($field) {
             $field.toggleClass('error', hasError);
             $field.closest('.form-label').toggleClass('error', hasError);
           });
         };
-        if (password !== password1) {
-          isValid = false;
-          toggleErrorClass(true);
-        } else if (!passwordRegex.test(password)) {
-          isValid = false;
-          toggleErrorClass(true);
-          this.showMessage(passwordErrorString, 'error');
-        } else {
-          toggleErrorClass(false);
+        if ($field1.length > 0 && $field2.length > 0) {
+          if (value1 !== value2) {
+            isValid = false;
+            toggleErrorClass(true);
+          } else if (!regex.test(value1)) {
+            isValid = false;
+            toggleErrorClass(true);
+            _this2.showMessage(errorMessage, 'error');
+          } else {
+            toggleErrorClass(false);
+          }
+        }
+      };
+
+      // Validate new and repeated passwords
+      validatePasswordFields('new_password', 'new_password_repeat', passwordRegex, passwordErrorString);
+
+      // Validate old and new passwords
+      var $field1 = $form.find("[name=\"old_password\"]");
+      var $field2 = $form.find("[name=\"password\"]");
+      if ($field1.length > 0 && $field2.length > 0) {
+        var value1 = $field1.val();
+        var value2 = $field2.val();
+        if (value1.length > 0 && value2.length > 0) {
+          if (!passwordRegex.test(value2)) {
+            isValid = false;
+            $field2.addClass('error');
+            $field2.closest('.form-label').addClass('error');
+            this.showMessage(passwordErrorString, 'error');
+          } else {
+            $field2.removeClass('error');
+            $field2.closest('.form-label').removeClass('error');
+          }
         }
       }
       return isValid;
@@ -6301,17 +6352,29 @@ var FormHandler = /*#__PURE__*/function () {
   }, {
     key: "sendRequest",
     value: function sendRequest(options) {
-      var _this2 = this;
+      var _this3 = this;
       $.ajax(options).done(function (response) {
         if (response) {
-          var isJson = _this2.isJsonString(response);
+          var isJson = _this3.isJsonString(response);
           if (isJson) {
             var data = JSON.parse(response);
             var message = data.msg || '';
             var type = data.type || '';
+            var userName = data.name || '';
             var url = data.url;
             var reload = data.reload || '';
-            if (message) _this2.showMessage(message, type);
+            var avatarURL = data.avatar_url || '';
+            var avatarID = data.avatar_id || '';
+            if (userName) {
+              _this3.$document.find('.sidebar-name, user-name-js').text(userName);
+            }
+            if (avatarURL) {
+              _this3.$document.find('.avatar-js').attr('src', avatarURL);
+            }
+            if (avatarID) {
+              _this3.$document.find('.avatar-id').val(avatarID);
+            }
+            if (message) _this3.showMessage(message, type);
             if (url) {
               window.location.href = url;
               return;
@@ -6327,10 +6390,10 @@ var FormHandler = /*#__PURE__*/function () {
               return;
             }
           } else {
-            _this2.showMessage(response);
+            _this3.showMessage(response);
           }
         }
-        _this2.hidePreloader();
+        _this3.hidePreloader();
       });
     }
   }, {
@@ -6372,7 +6435,7 @@ var FormHandler = /*#__PURE__*/function () {
   }, {
     key: "setCitiesSelectValues",
     value: function setCitiesSelectValues(countryID, $selector) {
-      var _this3 = this;
+      var _this4 = this;
       var $s = $selector.find('select');
       var hint = $s.find('option').eq(0).text().trim();
       var options = "<option selected disabled value=\"\">".concat(hint, "</option>");
@@ -6389,33 +6452,38 @@ var FormHandler = /*#__PURE__*/function () {
       };
       $.ajax(opt).done(function (response) {
         if (response) {
-          var isJson = _this3.isJsonString(response);
+          var isJson = _this4.isJsonString(response);
           if (isJson) {
             var data = JSON.parse(response);
             var message = data.msg || '';
             var cities = data.cities || {};
             var type = data.type || '';
-            if (message) _this3.showMessage(message, type);
+            if (message) _this4.showMessage(message, type);
             if (!(0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isObjectEmpty)(cities)) {
               $selector.removeClass('not-active');
               $s.attr('required', 'required');
               for (var cityID in cities) {
                 var name = cities[cityID];
-                options += "<option value=".concat(cityID, "\">").concat(name, "</option>");
+                options += "<option value=\"".concat(cityID, "\">").concat(name, "</option>");
               }
               $s.html(options);
               if ($s.hasClass('select')) $s.prop('selectedIndex', 0).selectric('refresh');
             }
           } else {
-            _this3.showMessage(response);
+            _this4.showMessage(response);
           }
         }
-        _this3.hidePreloader();
+        _this4.hidePreloader();
       });
     }
   }]);
 }();
 
+function setDefaultImage(preview) {
+  if (preview) {
+    preview.src = preview.getAttribute('data-default');
+  }
+}
 
 /***/ }),
 
@@ -6457,53 +6525,6 @@ var creditCart = function creditCart() {
     });
   });
 };
-
-/***/ }),
-
-/***/ "./resources/js/components/forms/_file-loader.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/forms/_file-loader.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   fileLoader: () => (/* binding */ fileLoader)
-/* harmony export */ });
-/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-var fileLoader = function fileLoader() {
-  var fileInputs = document.querySelectorAll('input[type="file"][data-limit]');
-  fileInputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      var file = event.target.files[0];
-      var dataLimit = parseInt(input.dataset.limit, 10) * 1024 * 1024;
-      var preview = input.closest(".form-avatar-label").querySelector(".preview img");
-      if (file) {
-        if (file.size > dataLimit) {
-          input.value = "";
-          setDefaultImage(preview);
-          $.fancybox.open($('#file-error-modal'));
-          return;
-        }
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          if (preview) {
-            preview.src = e.target.result;
-          }
-        };
-        reader.readAsDataURL(file);
-      } else {
-        setDefaultImage(preview);
-      }
-    });
-  });
-};
-function setDefaultImage(preview) {
-  if (preview) {
-    preview.src = preview.getAttribute('data-default');
-  }
-}
 
 /***/ }),
 
