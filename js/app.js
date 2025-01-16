@@ -6218,8 +6218,8 @@ var FormHandler = /*#__PURE__*/function () {
       var formData = new FormData(document.getElementById(formId));
       this.showPreloader();
       this.sendRequest({
-        type: $form.attr('method'),
-        url: $form.attr('action'),
+        type: $form.attr('method') || "POST",
+        url: $form.attr('action') || adminAjax,
         processData: false,
         contentType: false,
         data: formData

@@ -66,8 +66,8 @@ export default class FormHandler {
         this.showPreloader();
 
         this.sendRequest({
-            type: $form.attr('method'),
-            url: $form.attr('action'),
+            type: $form.attr('method') || "POST",
+            url: $form.attr('action') || adminAjax,
             processData: false,
             contentType: false,
             data: formData,
