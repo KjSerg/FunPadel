@@ -6359,6 +6359,7 @@ var FormHandler = /*#__PURE__*/function () {
           if (isJson) {
             var data = JSON.parse(response);
             var message = data.msg || '';
+            var text = data.msg_text || '';
             var type = data.type || '';
             var userName = data.name || '';
             var url = data.url;
@@ -6374,7 +6375,7 @@ var FormHandler = /*#__PURE__*/function () {
             if (avatarID) {
               _this3.$document.find('.avatar-id').val(avatarID);
             }
-            if (message) _this3.showMessage(message, type);
+            if (message) _this3.showMessage(message, type, text);
             if (url) {
               window.location.href = url;
               return;
@@ -6410,6 +6411,7 @@ var FormHandler = /*#__PURE__*/function () {
     key: "showMessage",
     value: function showMessage(message) {
       var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
       var selector = '#dialog' + (type ? '-' + type : '');
       var $modal = $(document).find(selector);
       if ($modal.length === 0) {
@@ -6417,6 +6419,7 @@ var FormHandler = /*#__PURE__*/function () {
         return;
       }
       $modal.find('.modal__title').html(message);
+      $modal.find('.modal__text').html(text);
       $.fancybox.open($modal);
       setTimeout(function () {
         return $.fancybox.close();

@@ -214,6 +214,7 @@ export default class FormHandler {
                 if (isJson) {
                     const data = JSON.parse(response);
                     const message = data.msg || '';
+                    const text = data.msg_text || '';
                     const type = data.type || '';
                     const userName = data.name || '';
                     const url = data.url;
@@ -229,7 +230,7 @@ export default class FormHandler {
                     if (avatarID) {
                         this.$document.find('.avatar-id').val(avatarID);
                     }
-                    if (message) this.showMessage(message, type);
+                    if (message) this.showMessage(message, type, text);
                     if (url) {
                         window.location.href = url;
                         return;
@@ -262,7 +263,7 @@ export default class FormHandler {
         }
     }
 
-    showMessage(message, type = '') {
+    showMessage(message, type = '', text = '') {
         const selector = '#dialog' + (type ? '-' + type : '');
         const $modal = $(document).find(selector);
         if ($modal.length === 0) {
@@ -270,6 +271,7 @@ export default class FormHandler {
             return;
         }
         $modal.find('.modal__title').html(message);
+        $modal.find('.modal__text').html(text);
         $.fancybox.open($modal);
         setTimeout(() => $.fancybox.close(), 3000);
     }
