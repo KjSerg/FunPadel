@@ -1,6 +1,6 @@
 import {numberInput} from "./forms/_number-input";
 import {_parallax} from "./features/_parallax";
-import {detectBrowser, isMobile, showPreloader} from "./utils/_helpers";
+import {detectBrowser, hidePreloader, isJsonString, isMobile, showPreloader} from "./utils/_helpers";
 import {showPassword} from "./forms/_show-password";
 import {selectrickInit} from "./forms/_selectrickInit";
 import SimpleBar from "simplebar";
@@ -13,6 +13,7 @@ import {Charts} from "./charts/Charts";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
 import FormHandler from './forms/FormHandler'
+import $ from "jquery";
 
 export default class Application {
     constructor() {
@@ -47,12 +48,15 @@ export default class Application {
             new Charts();
             const forms = new FormHandler('.form-js');
             this.showLoaderOnClick();
+            this.setPlayersMatchTable();
+            this.inputMatchListener();
+            this.setJsonData();
         });
     }
 
-    showLoaderOnClick(){
-        this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e){
-            if(!$(this).attr('href').includes('#')) showPreloader();
+    showLoaderOnClick() {
+        this.$doc.on('click', 'a.show-load, .header a, .footer a', function (e) {
+            if (!$(this).attr('href').includes('#')) showPreloader();
         });
     }
 
@@ -128,5 +132,63 @@ export default class Application {
         if (isMobile) {
             this.$body.attr("data-mobile", "mobile");
         }
+    }
+
+    setPlayersMatchTable() {
+        const $input = this.$doc.find('input[name="match_id"]:checked');
+        if (!$input.length) return;
+
+        const matchId = $input.val()?.trim();
+        if (!matchId) return;
+
+        showPreloader();
+
+        $.ajax({
+            type: "POST",
+            url: adminAjax,
+            data: {
+                action: 'get_match_players',
+                match: matchId,
+            },
+        })
+            .done((response) => {
+                hidePreloader();
+
+                if (!response) {
+                    this.updatePlayersTable('', '0');
+                    return;
+                }
+
+                if (isJsonString(response)) {
+                    const data = JSON.parse(response);
+                    this.updatePlayersTable(data.tbody || '', data.count || '0');
+                } else {
+                    this.updatePlayersTable(response, '0');
+                }
+            })
+            .fail(() => {
+                hidePreloader();
+                console.error('Error fetching players data.');
+                this.updatePlayersTable('', '0');
+            });
+    }
+
+    updatePlayersTable(tbody = '', count = '0') {
+        this.$doc.find('.book-table tbody').html(tbody);
+        this.$doc.find('.players-count').html(count);
+    }
+
+    inputMatchListener() {
+        const $input = this.$doc.find('input[name="match_id"]');
+        $input.on('change', () => this.setPlayersMatchTable());
+    }
+
+    setJsonData() {
+        $(document).on('click', '.set-json-data-js', function (e) {
+            const $t = $(this);
+            const data = $t.attr('data-json');
+            const selector = $t.attr('data-selector');
+            $(document).find(selector).val(data);
+        });
     }
 }
