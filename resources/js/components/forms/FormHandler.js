@@ -23,6 +23,10 @@ export default class FormHandler {
             if (val.length === 0 || !val) return;
             t.setCitiesSelectValues(val, $selector);
         });
+        $(document).on('change', '.trigger-form-js', function (e) {
+            const $select = $(this);
+            $select.closest('form').submit();
+        });
     }
 
     initialize() {

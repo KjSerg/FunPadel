@@ -262,7 +262,7 @@ export function detectBrowser() {
     return browserName;
 }
 
-export function isEven (number) {
+export function isEven(number) {
     return number % 2 === 0;
 }
 
@@ -275,3 +275,13 @@ export function invertNumber(num) {
 }
 
 export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+export function getQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = {};
+
+    for (const [key, value] of urlParams.entries()) {
+        params[key] = value;
+    }
+    return params;
+}

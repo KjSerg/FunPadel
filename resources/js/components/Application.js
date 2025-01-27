@@ -1,6 +1,6 @@
 import {numberInput} from "./forms/_number-input";
 import {_parallax} from "./features/_parallax";
-import {detectBrowser, hidePreloader, isJsonString, isMobile, showPreloader} from "./utils/_helpers";
+import {detectBrowser, getQueryParams, hidePreloader, isJsonString, isMobile, showPreloader} from "./utils/_helpers";
 import {showPassword} from "./forms/_show-password";
 import {selectrickInit} from "./forms/_selectrickInit";
 import SimpleBar from "simplebar";
@@ -15,10 +15,12 @@ import {accordion} from "./ui/_accardion";
 import FormHandler from './forms/FormHandler'
 import $ from "jquery";
 
+
 export default class Application {
     constructor() {
         this.$doc = $(document);
         this.$body = $("body");
+        this.parser = new DOMParser();
         this.init();
     }
 
@@ -29,7 +31,6 @@ export default class Application {
         this.initBrowserAttributes();
         this.initComponents();
         this.initParallax();
-        this.initSimpleBar();
     }
 
     /**
@@ -51,6 +52,8 @@ export default class Application {
             this.setPlayersMatchTable();
             this.inputMatchListener();
             this.setJsonData();
+            this.initSimpleBar();
+            this.getFilterFormsHTML();
         });
     }
 
@@ -83,24 +86,35 @@ export default class Application {
     handleTableScroll(container, simpleBarInstance) {
         const thead = container.querySelector("thead");
         const tableHeader = container.querySelector(".evolution-table-head");
-
-        if (!thead) return;
-
-        const diffTranslateY = tableHeader ? tableHeader.offsetHeight : 0;
+        const diffTranslateY = tableHeader?.offsetHeight || 0;
         const scrollElement = simpleBarInstance.getScrollElement();
 
-        scrollElement.addEventListener("scroll", () => {
+        const updateTableHeader = () => {
             const scrollTop = scrollElement.scrollTop;
             const translateY = Math.max(0, scrollTop - diffTranslateY);
 
-            thead.style.transform = `translateY(${translateY}px)`;
-
-            if (scrollTop > 20) {
-                thead.classList.add("moved");
-            } else {
-                thead.classList.remove("moved");
+            if (thead) {
+                thead.style.transform = `translateY(${translateY}px)`;
+                thead.classList.toggle("moved", scrollTop > 20);
             }
+        };
+
+        const handleScrollEnd = () => {
+            if (this.isSimpleBarScrolledToEnd(scrollElement)) {
+                this.getNextTableRowsHtml(container);
+            }
+        };
+
+        scrollElement.addEventListener("scroll", () => {
+            updateTableHeader();
+            handleScrollEnd();
         });
+        updateTableHeader();
+        handleScrollEnd();
+    }
+
+    isSimpleBarScrolledToEnd(scrollElement) {
+        return scrollElement.scrollTop + scrollElement.clientHeight >= scrollElement.scrollHeight - 1;
     }
 
     /**
@@ -191,4 +205,75 @@ export default class Application {
             $(document).find(selector).val(data);
         });
     }
+
+    async getNextTableRowsHtml(container) {
+        const parser = this.parser;
+        const url = container.getAttribute('data-next-post-url');
+        const isLoading = container.getAttribute('data-loading') === 'loading';
+        const $container = $(container).find('tbody');
+
+        if (isLoading || !url) return;
+
+        container.setAttribute('data-loading', 'loading');
+        showPreloader();
+
+        try {
+            const response = await $.ajax({
+                type: "GET",
+                url: url,
+            });
+
+            hidePreloader();
+
+            if (!response) {
+                console.warn('Empty response received.');
+                return;
+            }
+
+            const $parsedHtml = $(parser.parseFromString(response, "text/html"));
+            const $content = $parsedHtml.find('.scrollable-content');
+            const nextPostUrl = $content.attr('data-next-post-url') || '';
+            const newRows = $parsedHtml.find('tbody').html();
+
+            if (newRows) {
+                $container.append(newRows);
+                container.setAttribute('data-next-post-url', nextPostUrl);
+            } else {
+                console.warn('No new rows found in the response.');
+            }
+        } catch (error) {
+            console.error('Error fetching players data:', error);
+            container.setAttribute('data-loading', '');
+            this.getNextTableRowsHtml(container); // Retry
+        } finally {
+            container.setAttribute('data-loading', '');
+            hidePreloader();
+        }
+    }
+
+    getFilterFormsHTML() {
+        const data = getQueryParams();
+        data.action = 'get_matches_filters_html';
+        setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url: adminAjax,
+                data: data,
+            }).done((response) => {
+                const isJson = isJsonString(response);
+                if (isJson) {
+                    const responseData = JSON.parse(response);
+                    if (responseData.season_form_filter_html) {
+                        $(document).find('#season_form_filter_html').append(responseData.season_form_filter_html);
+                    }
+                    if (responseData.leagues_form_filter_html) {
+                        $(document).find('#leagues_form_filter_html').append(responseData.leagues_form_filter_html);
+                    }
+                    selectrickInit();
+                }
+            });
+        }, 1000);
+
+    }
+
 }

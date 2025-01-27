@@ -1,4 +1,7 @@
 import 'selectric';
+
 export const selectrickInit = () => {
-    $('.select').selectric();
+    const $select = $(document).find('.select').not('.selectric-init');
+    $select.selectric();
+    $select.addClass('selectric-init');
 }
