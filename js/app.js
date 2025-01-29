@@ -5986,8 +5986,12 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "getFilterFormsHTML",
     value: function getFilterFormsHTML() {
+      var $matchesTable = this.$doc.find('.matches-table');
+      var $leaderboardTable = this.$doc.find('.leaderboard-table');
+      if ($matchesTable.length === 0 && $leaderboardTable.length === 0) return;
       var data = (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.getQueryParams)();
       data.action = 'get_matches_filters_html';
+      data.table = $matchesTable.length > 0 ? 'matches' : 'leaderboard';
       setTimeout(function () {
         jquery__WEBPACK_IMPORTED_MODULE_15___default().ajax({
           type: 'POST',

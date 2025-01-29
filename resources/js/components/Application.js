@@ -128,8 +128,7 @@ export default class Application {
 
                 if ($elements.length > 0) {
                     _parallax({
-                        selector: ".parallax-element",
-                        wrapper: $section[0],
+                        selector: ".parallax-element", wrapper: $section[0],
                     });
                 }
             });
@@ -158,11 +157,8 @@ export default class Application {
         showPreloader();
 
         $.ajax({
-            type: "POST",
-            url: adminAjax,
-            data: {
-                action: 'get_match_players',
-                match: matchId,
+            type: "POST", url: adminAjax, data: {
+                action: 'get_match_players', match: matchId,
             },
         })
             .done((response) => {
@@ -219,8 +215,7 @@ export default class Application {
 
         try {
             const response = await $.ajax({
-                type: "GET",
-                url: url,
+                type: "GET", url: url,
             });
 
             hidePreloader();
@@ -252,13 +247,15 @@ export default class Application {
     }
 
     getFilterFormsHTML() {
+        const $matchesTable = this.$doc.find('.matches-table');
+        const $leaderboardTable = this.$doc.find('.leaderboard-table');
+        if ($matchesTable.length === 0 && $leaderboardTable.length === 0) return;
         const data = getQueryParams();
         data.action = 'get_matches_filters_html';
+        data.table = $matchesTable.length > 0 ? 'matches' : 'leaderboard';
         setTimeout(function () {
             $.ajax({
-                type: 'POST',
-                url: adminAjax,
-                data: data,
+                type: 'POST', url: adminAjax, data: data,
             }).done((response) => {
                 const isJson = isJsonString(response);
                 if (isJson) {
