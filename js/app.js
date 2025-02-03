@@ -5988,7 +5988,8 @@ var Application = /*#__PURE__*/function () {
     value: function getFilterFormsHTML() {
       var $matchesTable = this.$doc.find('.matches-table');
       var $leaderboardTable = this.$doc.find('.leaderboard-table');
-      if ($matchesTable.length === 0 && $leaderboardTable.length === 0) return;
+      var $formFilter = this.$doc.find('#season_form_filter_html');
+      if ($matchesTable.length === 0 && $leaderboardTable.length === 0 && $formFilter.length === 0) return;
       var data = (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.getQueryParams)();
       data.action = 'get_matches_filters_html';
       data.table = $matchesTable.length > 0 ? 'matches' : 'leaderboard';
@@ -6188,6 +6189,10 @@ var Charts = /*#__PURE__*/function () {
       var id = element.getAttribute('id');
       var labels = Object.keys(data);
       var values = Object.values(data);
+      if (values.length < 2) {
+        element.closest('.chart-container').innerHTML = '<p>Not enough data to display the graph.</p>';
+        return;
+      }
       var chartConfig = {
         type: 'line',
         data: {

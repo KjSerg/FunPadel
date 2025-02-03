@@ -249,7 +249,8 @@ export default class Application {
     getFilterFormsHTML() {
         const $matchesTable = this.$doc.find('.matches-table');
         const $leaderboardTable = this.$doc.find('.leaderboard-table');
-        if ($matchesTable.length === 0 && $leaderboardTable.length === 0) return;
+        const $formFilter = this.$doc.find('#season_form_filter_html');
+        if ($matchesTable.length === 0 && $leaderboardTable.length === 0 && $formFilter.length === 0) return;
         const data = getQueryParams();
         data.action = 'get_matches_filters_html';
         data.table = $matchesTable.length > 0 ? 'matches' : 'leaderboard';

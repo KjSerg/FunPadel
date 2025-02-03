@@ -113,6 +113,10 @@ export class Charts {
         const id = element.getAttribute('id');
         const labels = Object.keys(data);
         const values = Object.values(data);
+        if(values.length < 2){
+            element.closest('.chart-container').innerHTML = '<p>Not enough data to display the graph.</p>';
+            return;
+        }
 
         const chartConfig = {
             type: 'line',
