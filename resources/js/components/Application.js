@@ -73,7 +73,7 @@ export default class Application {
             const simpleBarInstance = new SimpleBar(container);
 
             if (container.classList.contains("table-wrapper")) {
-                this.handleTableScroll(container, simpleBarInstance);
+                // this.handleTableScroll(container, simpleBarInstance);
             }
         });
     }
@@ -273,5 +273,7 @@ export default class Application {
         }, 1000);
 
     }
+
+
 
 }

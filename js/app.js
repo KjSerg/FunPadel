@@ -5770,12 +5770,11 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "initSimpleBar",
     value: function initSimpleBar() {
-      var _this2 = this;
       window.ResizeObserver = resize_observer_polyfill__WEBPACK_IMPORTED_MODULE_7__["default"];
       document.querySelectorAll(".scrollable-content").forEach(function (container) {
         var simpleBarInstance = new simplebar__WEBPACK_IMPORTED_MODULE_5__["default"](container);
         if (container.classList.contains("table-wrapper")) {
-          _this2.handleTableScroll(container, simpleBarInstance);
+          // this.handleTableScroll(container, simpleBarInstance);
         }
       });
     }
@@ -5788,7 +5787,7 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "handleTableScroll",
     value: function handleTableScroll(container, simpleBarInstance) {
-      var _this3 = this;
+      var _this2 = this;
       var thead = container.querySelector("thead");
       var tableHeader = container.querySelector(".evolution-table-head");
       var diffTranslateY = (tableHeader === null || tableHeader === void 0 ? void 0 : tableHeader.offsetHeight) || 0;
@@ -5802,8 +5801,8 @@ var Application = /*#__PURE__*/function () {
         }
       };
       var handleScrollEnd = function handleScrollEnd() {
-        if (_this3.isSimpleBarScrolledToEnd(scrollElement)) {
-          _this3.getNextTableRowsHtml(container);
+        if (_this2.isSimpleBarScrolledToEnd(scrollElement)) {
+          _this2.getNextTableRowsHtml(container);
         }
       };
       scrollElement.addEventListener("scroll", function () {
@@ -5855,7 +5854,7 @@ var Application = /*#__PURE__*/function () {
     key: "setPlayersMatchTable",
     value: function setPlayersMatchTable() {
       var _$input$val,
-        _this4 = this;
+        _this3 = this;
       var $input = this.$doc.find('input[name="match_id"]:checked');
       if (!$input.length) return;
       var matchId = (_$input$val = $input.val()) === null || _$input$val === void 0 ? void 0 : _$input$val.trim();
@@ -5871,19 +5870,19 @@ var Application = /*#__PURE__*/function () {
       }).done(function (response) {
         (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.hidePreloader)();
         if (!response) {
-          _this4.updatePlayersTable('', '0');
+          _this3.updatePlayersTable('', '0');
           return;
         }
         if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.isJsonString)(response)) {
           var data = JSON.parse(response);
-          _this4.updatePlayersTable(data.tbody || '', data.count || '0');
+          _this3.updatePlayersTable(data.tbody || '', data.count || '0');
         } else {
-          _this4.updatePlayersTable(response, '0');
+          _this3.updatePlayersTable(response, '0');
         }
       }).fail(function () {
         (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.hidePreloader)();
         console.error('Error fetching players data.');
-        _this4.updatePlayersTable('', '0');
+        _this3.updatePlayersTable('', '0');
       });
     }
   }, {
@@ -5897,10 +5896,10 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "inputMatchListener",
     value: function inputMatchListener() {
-      var _this5 = this;
+      var _this4 = this;
       var $input = this.$doc.find('input[name="match_id"]');
       $input.on('change', function () {
-        return _this5.setPlayersMatchTable();
+        return _this4.setPlayersMatchTable();
       });
     }
   }, {
@@ -7264,7 +7263,28 @@ var fancyboxInit = function fancyboxInit() {
     e.preventDefault();
     jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
   });
+  showNotices();
 };
+function showNotices() {
+  if (message_list) {
+    for (var a = 0; a < message_list.length; a++) {
+      var item = message_list[a];
+      var type = item.type;
+      var message = item.text;
+      var selector = '#dialog' + (type ? '-' + type : '');
+      var $modal = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find(selector);
+      if ($modal.length === 0) {
+        alert(message);
+        return;
+      }
+      $modal.find('.modal__title').html(message);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($modal);
+      setTimeout(function () {
+        return jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.close();
+      }, 3000);
+    }
+  }
+}
 
 /***/ }),
 
