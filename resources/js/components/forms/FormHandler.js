@@ -27,6 +27,14 @@ export default class FormHandler {
             const $select = $(this);
             $select.closest('form').submit();
         });
+        $(document).on('change', '.leaderboard-gender-select', function (e) {
+            const $select = $(this);
+            const $form = $select.closest('form');
+            const val = $select.val();
+            const name = $select.attr('name');
+            const url = $form.attr('action') + '?' + name + '=' + val;
+            window.location.href = url;
+        });
     }
 
     initialize() {

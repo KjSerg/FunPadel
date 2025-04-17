@@ -5876,6 +5876,11 @@ var Application = /*#__PURE__*/function () {
         if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_2__.isJsonString)(response)) {
           var data = JSON.parse(response);
           _this3.updatePlayersTable(data.tbody || '', data.count || '0');
+          if (data.possible_to_buy === 'false') {
+            jquery__WEBPACK_IMPORTED_MODULE_15___default()(document).find('.book-form__button').addClass('not-active');
+          } else {
+            jquery__WEBPACK_IMPORTED_MODULE_15___default()(document).find('.book-form__button').removeClass('not-active');
+          }
         } else {
           _this3.updatePlayersTable(response, '0');
         }
@@ -6367,6 +6372,14 @@ var FormHandler = /*#__PURE__*/function () {
       $(document).on('change', '.trigger-form-js', function (e) {
         var $select = $(this);
         $select.closest('form').submit();
+      });
+      $(document).on('change', '.leaderboard-gender-select', function (e) {
+        var $select = $(this);
+        var $form = $select.closest('form');
+        var val = $select.val();
+        var name = $select.attr('name');
+        var url = $form.attr('action') + '?' + name + '=' + val;
+        window.location.href = url;
       });
     }
   }, {

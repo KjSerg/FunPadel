@@ -172,6 +172,11 @@ export default class Application {
                 if (isJsonString(response)) {
                     const data = JSON.parse(response);
                     this.updatePlayersTable(data.tbody || '', data.count || '0');
+                    if(data.possible_to_buy === 'false'){
+                        $(document).find('.book-form__button').addClass('not-active');
+                    }else {
+                        $(document).find('.book-form__button').removeClass('not-active');
+                    }
                 } else {
                     this.updatePlayersTable(response, '0');
                 }
